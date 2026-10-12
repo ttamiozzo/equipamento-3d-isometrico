@@ -1,10 +1,10 @@
-<#
+﻿<#
 .SYNOPSIS
   Servidor HTTP local para pre-visualizar dashboards iso3d e salvar exportacoes.
 .DESCRIPTION
   - GET  /<arquivo>                 serve arquivos da pasta -Root.
   - POST /save?name=<arquivo>       grava o corpo da requisicao em -Root\<arquivo>.
-    So aceita nomes simples terminados em .drawio, .json ou .svg (sem pastas).
+    So aceita nomes simples terminados em .drawio, .xml, .json ou .svg (sem pastas).
   So escuta em localhost.
 .EXAMPLE
   powershell -ExecutionPolicy Bypass -File serve.ps1 -Root C:\pop -Port 8765
@@ -20,10 +20,12 @@ Write-Host "serving $Root on http://localhost:$Port/"
 $types = @{ '.html' = 'text/html; charset=utf-8'; '.json' = 'application/json; charset=utf-8'; '.js' = 'text/javascript'; '.svg' = 'image/svg+xml'; '.drawio' = 'application/xml' }
 while ($l.IsListening) {
   $ctx = $l.GetContext(); $req = $ctx.Request; $res = $ctx.Response
+  # permite que o draw.io (app.diagrams.net) abra bibliotecas servidas daqui
+  $res.AddHeader('Access-Control-Allow-Origin', '*')
   try {
     if ($req.HttpMethod -eq 'POST' -and $req.Url.AbsolutePath -eq '/save') {
       $name = $req.QueryString['name']
-      if ($name -notmatch '^[\w.\-]+\.(drawio|json|svg)$') { $res.StatusCode = 400 }
+      if ($name -notmatch '^[\w.\-]+\.(drawio|json|svg|xml)$') { $res.StatusCode = 400 }
       else {
         $sr = New-Object System.IO.StreamReader($req.InputStream, [System.Text.Encoding]::UTF8)
         $body = $sr.ReadToEnd(); $sr.Close()

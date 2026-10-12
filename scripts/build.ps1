@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
   Monta um dashboard iso3d (HTML unico) a partir de um JSON de dashboard.
 .DESCRIPTION

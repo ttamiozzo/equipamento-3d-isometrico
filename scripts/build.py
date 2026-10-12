@@ -19,15 +19,47 @@ from pathlib import Path
 SKILL = Path(__file__).resolve().parent.parent
 
 
+def catalog(dirs):
+    """Dashboard com todos os modelos das pastas, soltos em grade de 4 colunas, com placas instaladas."""
+    models = {}
+    for d in dirs:
+        for f in sorted(Path(d).glob("*.json")):
+            m = json.loads(f.read_text(encoding="utf-8"))
+            if m.get("id") and m.get("size") and m["id"] not in models:
+                models[m["id"]] = m
+    devices, x, y, row_h = [], 0.0, 0.0, 0.0
+    for i, (mid, m) in enumerate(models.items()):
+        if i and i % 4 == 0:
+            x, y, row_h = 0.0, y + row_h + 160, 0.0
+        cards = {}
+        for sl in m.get("slots", []):
+            for ck, c in (m.get("cards") or {}).items():
+                acc = sl.get("accepts")
+                if not acc or c.get("role") in acc or ck in acc:
+                    cards[str(sl["id"])] = ck
+                    break
+        devices.append({"id": f"m{i}", "model": mid, "name": m.get("name", mid),
+                        "pos": {"x": x, "y": y, "z": 0}, "cards": cards})
+        x += m["size"]["w"] + 180
+        row_h = max(row_h, m["size"]["h"])
+    return {"schema": "iso3d/dashboard@1", "title": "Catálogo de modelos",
+            "subtitle": f"{len(models)} modelos", "models": models, "racks": [],
+            "devices": devices, "links": []}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("dashboard")
+    ap.add_argument("dashboard", help="JSON do dashboard, ou 'catalog' para montar o catálogo de modelos")
     ap.add_argument("out")
     ap.add_argument("--models", action="append", default=[])
     a = ap.parse_args()
 
-    dash = Path(a.dashboard).resolve()
-    data = json.loads(dash.read_text(encoding="utf-8"))
+    if a.dashboard == "catalog":
+        data = catalog([Path(d) for d in a.models] + [SKILL / "assets" / "models"])
+        dash = Path.cwd() / "catalog.json"
+    else:
+        dash = Path(a.dashboard).resolve()
+        data = json.loads(dash.read_text(encoding="utf-8"))
     models = data.setdefault("models", {})
     dirs = []
     for d in a.models:

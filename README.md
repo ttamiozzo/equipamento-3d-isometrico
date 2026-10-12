@@ -8,6 +8,23 @@ Skill para Claude que transforma equipamentos de rede, telecom e datacenter em m
 
 Os modelos usam medidas reais em milímetros e ids de porta iguais aos da CLI do fabricante (`0/1/3`, `xe-0/0/0`, `Port1`…). Por isso equipamentos de fabricantes diferentes se encaixam no mesmo rack, e o painel pode ser alimentado com dados reais (SNMP, Zabbix, NMS) por `IsoDash.update(...)`.
 
+## Biblioteca para o draw.io
+
+O arquivo [`drawio/iso3d-equipamentos.xml`](drawio/iso3d-equipamentos.xml) é uma biblioteca de formas do draw.io com todos os modelos de `assets/models/`:
+
+- **frente e traseira** de cada equipamento, como imagem vetorial em escala real (1 px = 1 mm);
+- **placas** dos chassis modulares (MA5600T, NE8000 M4) como peças separadas, que se encaixam nos slots;
+- **portas** como pontos de conexão (atributos `porta`, `tipo`, `modelo`), para ligar cabos diretamente nelas.
+
+Para usar no draw.io (app.diagrams.net, desktop ou extensão do VS Code), baixe o arquivo e abra em **Arquivo › Abrir biblioteca › Dispositivo**. A paleta aparece na lateral esquerda. Como o repositório é privado, o link do GitHub não abre direto no draw.io: use o arquivo baixado.
+
+Para regenerar depois de criar ou alterar modelos:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\build-catalog.ps1 -Out catalogo.html
+# abra catalogo.html, painel lateral › Importar / exportar dados › Baixar biblioteca
+```
+
 ## Estrutura
 
 ```
@@ -19,7 +36,9 @@ assets/models/           biblioteca de modelos
 assets/exemplo-pop.json  dashboard de exemplo (2 racks, OLT, DIOs, borda, switch, servidor)
 scripts/build.ps1        monta o HTML a partir de um dashboard (Windows / PowerShell)
 scripts/build.py         o mesmo em Python
+scripts/build-catalog.ps1 catálogo com todos os modelos (base para a biblioteca do draw.io)
 scripts/serve.ps1        servidor local para pré-visualizar e salvar exportações
+drawio/iso3d-equipamentos.xml  biblioteca de formas do draw.io gerada a partir dos modelos
 ```
 
 ## Uso rápido

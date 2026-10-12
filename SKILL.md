@@ -99,9 +99,15 @@ O mesmo HTML entrega as três visualizações a partir dos mesmos modelos. Escol
 
 - **3D:** o three.js 0.128 é carregado do jsDelivr na hora em que o usuário abre o modo 3D, então é preciso internet. Funciona também em Artifact. Cada face é o mesmo desenho do modo isométrico, aplicado como textura, e cada cabo vira um tubo com o mesmo trajeto. O clique em porta, placa ou cabo abre o mesmo painel lateral.
 - **draw.io:** gera um bloco por rack, com uma coluna de frente e outra de traseira. As faces entram como imagem vetorial, cada porta vira um ponto conectável com dica, e cada cabo vira uma ligação ortogonal com a cor do tipo de cabo, tracejada quando está fora. Abre em draw.io, diagrams.net e na extensão do VS Code.
+- **Biblioteca do draw.io** (`drawio/iso3d-equipamentos.xml`): paleta com uma peça por face de cada modelo e uma por placa de chassi modular. As peças podem ser arrastadas para montar diagramas do zero, e as portas são pontos de conexão. **Sempre que criar ou alterar um modelo, regenere a biblioteca**, assim:
+  1. `scripts/build-catalog.ps1 -Out catalogo.html -ModelsDir <pasta de modelos do usuário>` (ou `python scripts/build.py catalog catalogo.html --models <pasta>`). Isso gera um painel com todos os modelos.
+  2. Abra o catálogo com `scripts/serve.ps1` e rode `await fetch('/save?name=iso3d-equipamentos.xml', { method: 'POST', body: await IsoDash.exportDrawioLibrary() })`.
+  3. Copie o arquivo para `drawio/`.
+
+  Sem navegador, entregue o `catalogo.html` e peça ao usuário para clicar em **Baixar biblioteca**. No draw.io, a biblioteca abre por *Arquivo › Abrir biblioteca*.
 - **Para gravar o .drawio em disco** quando você só tem acesso a um navegador automatizado, suba `scripts/serve.ps1` na pasta do dashboard e rode na página:
   `await fetch('/save?name=<nome>.drawio', { method: 'POST', body: IsoDash.exportDrawio() })`
-  O servidor só grava nomes simples terminados em `.drawio`, `.json` ou `.svg`. Sem navegador, entregue o HTML e diga ao usuário para clicar em **Baixar .drawio**. Isso funciona com o arquivo aberto localmente; dentro de um Artifact, o download é bloqueado e o usuário precisa usar **Gerar draw.io** e copiar.
+  O servidor só grava nomes simples terminados em `.drawio`, `.xml`, `.json` ou `.svg`. Sem navegador, entregue o HTML e diga ao usuário para clicar em **Baixar .drawio**. Isso funciona com o arquivo aberto localmente; dentro de um Artifact, o download é bloqueado e o usuário precisa usar **Gerar draw.io** e copiar.
 
 ### 5. Confira e entregue
 

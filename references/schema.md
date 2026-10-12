@@ -203,6 +203,7 @@ Outras funções disponíveis, úteis também para conferir a página com um nav
 | `IsoDash.setView('iso'\|'front'\|'side'\|'rear'\|'top')` | gira a câmera com animação de ~0,6 s e reenquadra a cena inteira. Para combinar com `focus`, chame `focus` só depois que a animação terminar |
 | `IsoDash.select(ref)` | seleciona sem mudar o enquadramento |
 | `await IsoDash.mode('3d' \| 'svg')` | troca entre o 3D (three.js) e o desenho isométrico; retorna `false` se o 3D não puder abrir (sem internet ou sem WebGL) |
+| `await IsoDash.exportDrawioLibrary([ids])` | retorna uma biblioteca do draw.io (`<mxlibrary>`) com os modelos do painel (ou só os ids passados): uma peça por face, com frente e, se houver conteúdo, traseira, e uma por placa. Portas viram pontos conectáveis com os atributos `porta`, `tipo` e `modelo` |
 | `IsoDash.exportDrawio()` | retorna o XML de um arquivo `.drawio`: frente e traseira por rack, portas conectáveis (atributo `ref` = `equipamento:porta`) e cabos coloridos por tipo |
 | `IsoDash.fit()` | enquadra tudo |
 | `IsoDash.issues()` | lista os problemas de validação (`[nível, mensagem]`) |
