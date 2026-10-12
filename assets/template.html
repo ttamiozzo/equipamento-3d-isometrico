@@ -1,0 +1,1264 @@
+<title>Mapa de Equipamentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* iso3d dashboard v1 · cena 3D ortográfica (SVG) à esquerda, painel de detalhes à direita, tabela de portas abaixo */
+:root {
+  --bg:#0f141a; --surface:#161d25; --surface-2:#1c2530; --line:#2a3542; --fg:#e2e8ef; --muted:#8a97a7; --accent:#3fb6e6;
+  --ok:#41d18a; --alarm:#ff9a3c; --down:#ff5d5d; --disabled:#6b7685; --off:#3a434e;
+  --m-fiber-sm:#f4c430; --m-fiber-mm:#2ec4c4; --m-dac:#8c96a2; --m-aoc:#e07bd0; --m-cat5e:#5b9cf0; --m-cat6:#4a8fe7; --m-power:#e05a4f; --m-coax:#b9c0c8; --m-e1:#c99b6d; --m-generic:#b39ddb;
+  --scene:#121920; --dot:#1d2733; --shadow:#000000; --floor:#1a222c; --floor-line:#2b3744;
+  /* cores físicas dos equipamentos (iguais nos dois temas) */
+  --light-front:#aab2bb; --light-top:#c7ced5; --light-side:#7e8791; --light-card:#9aa3ad; --light-edge:#66707b;
+  --dark-front:#2d353e; --dark-top:#3d4650; --dark-side:#232a32; --dark-card:#38414b; --dark-edge:#15191e;
+  --white-front:#dfe3e7; --white-top:#eef1f3; --white-side:#b9c0c7; --white-card:#cfd5da; --white-edge:#8f99a3;
+  --black-front:#1d2126; --black-top:#2a3036; --black-side:#15181c; --black-card:#262b31; --black-edge:#0a0c0e;
+  --post-front:#3a424c; --post-top:#4a535e; --post-side:#2b323a;
+  --cage:#1b2026; --vent:#4b545e; --ink-dark:#1a2129; --ink-light:#e3e9ef; --screw:#c9d0d6;
+  --f-display:"Barlow Condensed","Arial Narrow",sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
+  --bg:#e8ecf0; --surface:#f9fbfc; --surface-2:#eff2f5; --line:#d2d9e1; --fg:#16202b; --muted:#566373; --accent:#1f8fc4;
+  --ok:#1c9a59; --alarm:#d8731a; --down:#d63c3c; --disabled:#8d98a4; --off:#a3adb8;
+  --m-fiber-sm:#e0ad00; --m-fiber-mm:#13a5a5; --m-dac:#5f6b78; --m-aoc:#c55bb4; --m-cat5e:#3f7fd6; --m-cat6:#2f74d0; --m-power:#d0453a; --m-coax:#7c8691; --m-e1:#a97a4a; --m-generic:#7e63c4;
+  --scene:#f3f5f7; --dot:#dde3e9; --shadow:#33404d; --floor:#e4e9ee; --floor-line:#c9d1da;
+  color-scheme: light;
+} }
+:root[data-theme="light"] {
+  --bg:#e8ecf0; --surface:#f9fbfc; --surface-2:#eff2f5; --line:#d2d9e1; --fg:#16202b; --muted:#566373; --accent:#1f8fc4;
+  --ok:#1c9a59; --alarm:#d8731a; --down:#d63c3c; --disabled:#8d98a4; --off:#a3adb8;
+  --m-fiber-sm:#e0ad00; --m-fiber-mm:#13a5a5; --m-dac:#5f6b78; --m-aoc:#c55bb4; --m-cat5e:#3f7fd6; --m-cat6:#2f74d0; --m-power:#d0453a; --m-coax:#7c8691; --m-e1:#a97a4a; --m-generic:#7e63c4;
+  --scene:#f3f5f7; --dot:#dde3e9; --shadow:#33404d; --floor:#e4e9ee; --floor-line:#c9d1da;
+  color-scheme: light;
+}
+:root[data-theme="dark"] { color-scheme: dark; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 14px; line-height: 1.45; }
+.wrap { max-width: 1520px; margin: 0 auto; padding: 20px 20px 40px; display: grid; gap: 16px; }
+@media (max-width: 600px) { .wrap { padding: 14px 16px 32px; } }
+header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
+.eyebrow { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 700 32px/1.05 var(--f-display); letter-spacing: .01em; margin: 6px 0 0; text-wrap: balance; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; display: grid; gap: 1px; min-width: 88px; }
+.chip b { font: 600 17px/1.2 var(--f-mono); font-variant-numeric: tabular-nums; }
+.chip span { font-size: 11px; color: var(--muted); }
+.chip.ok b { color: var(--ok); } .chip.alarm b, .chip.warn b { color: var(--alarm); } .chip.down b, .chip.crit b { color: var(--down); } .chip.info b { color: var(--accent); }
+.main { display: grid; grid-template-columns: minmax(0,1fr) 370px; gap: 16px; align-items: start; }
+@media (max-width: 980px) { .main { grid-template-columns: minmax(0,1fr); } }
+.stage { position: relative; background-color: var(--scene); background-image: radial-gradient(var(--dot) 1px, transparent 1.2px); background-size: 18px 18px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; height: 700px; min-width: 0; }
+@media (max-width: 980px) { .stage { height: 540px; } }
+@media (max-width: 600px) { .stage { height: 450px; } }
+#scene { width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; user-select: none; }
+#scene.panning { cursor: grabbing; }
+#scene:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.toolbar { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; pointer-events: none; }
+.toolbar > * { pointer-events: auto; }
+.tb-group { display: flex; gap: 6px; flex-wrap: wrap; align-items: start; }
+.seg { display: inline-flex; flex-wrap: wrap; background: var(--surface); border: 1px solid var(--line); border-radius: 7px; padding: 2px; gap: 2px; }
+.seg button, .tb-btn { font: 500 12px/1 var(--f-body); color: var(--muted); background: transparent; border: 0; border-radius: 5px; padding: 7px 9px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--surface-2); color: var(--fg); box-shadow: inset 0 0 0 1px var(--line); }
+.seg button:hover, .tb-btn:hover { color: var(--fg); }
+.tb-btn { background: var(--surface); border: 1px solid var(--line); min-width: 32px; font-family: var(--f-mono); font-size: 14px; padding: 6px 9px; }
+button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.legend { position: absolute; left: 10px; bottom: 10px; background: color-mix(in srgb, var(--surface) 92%, transparent); border: 1px solid var(--line); border-radius: 7px; padding: 7px 10px; display: flex; flex-wrap: wrap; gap: 5px 12px; font-size: 11.5px; color: var(--muted); max-width: calc(100% - 20px); }
+.legend i { display: inline-block; vertical-align: middle; margin-right: 5px; }
+.lg-dot { width: 8px; height: 8px; border-radius: 50%; }
+.lg-line { width: 18px; height: 3px; border-radius: 2px; }
+.hint { position: absolute; right: 12px; bottom: 12px; font-size: 11px; color: var(--muted); text-align: right; }
+@media (max-width: 1099px) { .hint { display: none; } }
+@media (min-width: 1100px) { .legend { max-width: calc(100% - 360px); } }
+#tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 9px; font: 12px/1.4 var(--f-mono); white-space: nowrap; box-shadow: 0 6px 20px rgb(0 0 0 / .25); z-index: 3; }
+#gl { position: absolute; inset: 0; }
+#gl canvas { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
+#gl canvas:active { cursor: grabbing; }
+.gl-msg { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: var(--muted); }
+.fatal { position: absolute; inset: 60px 20px auto; background: var(--surface); border: 1px solid var(--down); border-radius: 8px; padding: 14px; font: 13px/1.5 var(--f-mono); color: var(--fg); }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 14px; min-width: 0; }
+.panel h2 { font: 600 13px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.panel h3 { font: 600 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 4px 0 0; }
+.pid { font: 700 30px/1.05 var(--f-display); letter-spacing: .02em; overflow-wrap: anywhere; }
+.pid-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.sub { color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font: 600 11px/1 var(--f-mono); letter-spacing: .05em; text-transform: uppercase; padding: 5px 8px; border-radius: 99px; border: 1px solid currentColor; }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.pill.up { color: var(--ok); } .pill.alarm { color: var(--alarm); } .pill.down { color: var(--down); } .pill.disabled, .pill.free { color: var(--muted); }
+dl.kv { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 6px 14px; margin: 0; }
+dl.kv dt { color: var(--muted); font-size: 12.5px; }
+dl.kv dd { margin: 0; text-align: right; font: 500 13px var(--f-mono); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.field { display: grid; gap: 5px; }
+.field label { font-size: 12px; color: var(--muted); }
+.field select, .field input, textarea, .filters input, .filters select { font: 13px var(--f-body); color: var(--fg); background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; width: 100%; min-width: 0; }
+.row2 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 8px; }
+textarea { font-family: var(--f-mono); font-size: 11.5px; min-height: 160px; resize: vertical; }
+.btn { font: 500 12.5px/1 var(--f-body); color: var(--fg); background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; padding: 8px 11px; cursor: pointer; }
+.btn:hover { border-color: var(--muted); }
+.btn.link { background: none; border: 0; padding: 0; color: var(--accent); font: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.port-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); gap: 5px; }
+.port-grid button { font: 500 11px/1.1 var(--f-mono); padding: 7px 4px; border-radius: 5px; border: 1px solid var(--line); background: var(--surface-2); color: var(--fg); cursor: pointer; position: relative; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.port-grid button::after { content: ""; position: absolute; top: 3px; right: 3px; width: 5px; height: 5px; border-radius: 50%; background: var(--off); }
+.port-grid button.st-up::after { background: var(--ok); } .port-grid button.st-alarm::after { background: var(--alarm); } .port-grid button.st-down::after { background: var(--down); }
+.note { font-size: 12px; color: var(--muted); }
+.issues { margin: 0; padding-left: 18px; font-size: 12.5px; display: grid; gap: 4px; }
+.issues .erro { color: var(--down); } .issues .aviso { color: var(--alarm); }
+details.io summary { cursor: pointer; font-size: 12.5px; color: var(--muted); }
+details.io[open] { display: grid; gap: 8px; }
+.toast { font-size: 12px; color: var(--ok); }
+.tablecard { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px 6px; display: grid; gap: 10px; min-width: 0; }
+.tablehead { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: center; }
+.tablehead h2 { font: 600 13px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.filters input { width: 240px; max-width: 100%; }
+.filters select { width: auto; max-width: 100%; }
+.tscroll { overflow: auto; max-height: 440px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { position: sticky; top: 0; background: var(--surface); text-align: left; font: 600 11px var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 7px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td.mono { font-family: var(--f-mono); }
+tbody tr { cursor: pointer; }
+tbody tr:hover td { background: var(--surface-2); }
+tbody tr.sel td { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: var(--off); }
+.dot.st-up { background: var(--ok); } .dot.st-alarm { background: var(--alarm); } .dot.st-down { background: var(--down); } .dot.st-disabled { background: var(--disabled); }
+
+/* SVG */
+.f-light.front, .f-light.rear { fill: var(--light-front); } .f-light.top { fill: var(--light-top); } .f-light.side { fill: var(--light-side); }
+.f-dark.front, .f-dark.rear { fill: var(--dark-front); } .f-dark.top { fill: var(--dark-top); } .f-dark.side { fill: var(--dark-side); }
+.f-white.front, .f-white.rear { fill: var(--white-front); } .f-white.top { fill: var(--white-top); } .f-white.side { fill: var(--white-side); }
+.f-black.front, .f-black.rear { fill: var(--black-front); } .f-black.top { fill: var(--black-top); } .f-black.side { fill: var(--black-side); }
+.f-post.front, .f-post.rear { fill: var(--post-front); } .f-post.top { fill: var(--post-top); } .f-post.side { fill: var(--post-side); }
+.face { stroke: var(--shadow); stroke-opacity: .45; stroke-width: .5; }
+.device.sel .face { stroke: var(--accent); stroke-opacity: 1; stroke-width: 1.4; }
+.card-light { fill: var(--light-card); stroke: var(--light-edge); stroke-width: .5; }
+.card-dark { fill: var(--dark-card); stroke: var(--dark-edge); stroke-width: .5; }
+.card-white { fill: var(--white-card); stroke: var(--white-edge); stroke-width: .5; }
+.card-black { fill: var(--black-card); stroke: var(--black-edge); stroke-width: .5; }
+.slot:hover rect.cardface { filter: brightness(1.12); }
+.slot.sel rect.cardface { stroke: var(--accent); stroke-width: 1.2; }
+.filler { fill: color-mix(in srgb, var(--light-card) 85%, #000); stroke: var(--light-edge); stroke-width: .4; }
+.vent { fill: var(--vent); }
+.screw { fill: var(--screw); stroke: #59636e; stroke-width: .3; }
+.ink-dark { fill: var(--ink-dark); } .ink-light { fill: var(--ink-light); }
+.silk { font-family: var(--f-mono); font-weight: 600; letter-spacing: .03em; }
+.silk-d { font-family: var(--f-display); font-weight: 700; letter-spacing: .05em; }
+.display { fill: #0b1712; stroke: #000; stroke-width: .3; }
+.cage { fill: var(--cage); }
+.cage-in { fill: #07090b; }
+.adapter-sc { fill: #2f6fd0; } .adapter-apc { fill: #23935a; } .adapter-lc { fill: #6f7a86; }
+.plug { stroke: #0b0d10; stroke-width: .25; }
+.pnum { font: 600 3px var(--f-mono); fill: #eef2f5; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.pnum.on { fill: #101418; }
+.stripe { fill: var(--off); }
+.st-up { fill: var(--ok); } .st-alarm { fill: var(--alarm); } .st-down { fill: var(--down); } .st-disabled { fill: var(--disabled); } .st-free { fill: var(--off); }
+.led { fill: var(--off); }
+.port { cursor: pointer; }
+.port:hover .cage { stroke: var(--fg); stroke-width: .5; }
+.ring { fill: none; stroke: var(--fg); stroke-width: 1; }
+.floor { fill: var(--floor); stroke: var(--floor-line); stroke-width: 1; }
+.floor-label { font: 700 26px var(--f-display); fill: var(--muted); letter-spacing: .06em; }
+.casing { fill: none; stroke: var(--shadow); stroke-opacity: .5; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.cable { fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.hit { fill: none; stroke: transparent; stroke-width: 8; pointer-events: stroke; cursor: pointer; }
+g.cab.down .cable { stroke-dasharray: 4 3; }
+g.cab.alarm .casing { stroke: var(--alarm); stroke-opacity: .9; }
+g.cab.down .casing { stroke: var(--down); stroke-opacity: .8; }
+g.cab.behind { opacity: .3; }
+g.cab.dim { opacity: .16; }
+g.cab.hot .casing { stroke-width: 5.5; stroke-opacity: .75; }
+g.cab.hot .cable { stroke-width: 2.8; }
+.flow { fill: none; stroke: #fff; stroke-width: 1.1; stroke-dasharray: 2 10; stroke-linecap: round; opacity: .9; animation: flow 1.1s linear infinite; pointer-events: none; }
+@keyframes flow { to { stroke-dashoffset: -24; } }
+@media (prefers-reduced-motion: reduce) { .flow { animation: none; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow" id="eyebrow">Mapa de equipamentos</div>
+      <h1 id="title">Carregando…</h1>
+    </div>
+    <div class="chips" id="chips"></div>
+  </header>
+
+  <div class="main">
+    <div class="stage" id="stage">
+      <svg id="scene" tabindex="0" xmlns="http://www.w3.org/2000/svg" aria-label="Cena 3D dos equipamentos e cabos">
+        <defs>
+          <pattern id="p-grille" width="3" height="8" patternUnits="userSpaceOnUse"><rect x=".5" y=".8" width="1.6" height="6.4" rx=".8" class="vent"/></pattern>
+          <pattern id="p-perf" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r=".9" class="vent"/></pattern>
+          <pattern id="p-slits" width="10" height="5" patternUnits="userSpaceOnUse"><rect x="1.5" y="1.8" width="7" height="1.4" rx=".7" class="vent"/></pattern>
+          <pattern id="p-hex" width="4.6" height="4" patternUnits="userSpaceOnUse"><circle cx="1.15" cy="1" r=".85" class="vent"/><circle cx="3.45" cy="3" r=".85" class="vent"/></pattern>
+        </defs>
+        <g id="world"></g>
+      </svg>
+      <div id="gl" hidden></div>
+      <div class="toolbar">
+        <div class="tb-group">
+          <div class="seg" role="group" aria-label="Modo de visualização">
+            <button type="button" data-mode="svg" aria-pressed="true">Desenho</button>
+            <button type="button" data-mode="3d" aria-pressed="false">3D</button>
+          </div>
+          <div class="seg" role="group" aria-label="Vistas prontas">
+            <button type="button" data-view="iso" aria-pressed="true">Isométrico</button>
+            <button type="button" data-view="front" aria-pressed="false">Frente</button>
+            <button type="button" data-view="side" aria-pressed="false">Lateral</button>
+            <button type="button" data-view="rear" aria-pressed="false">Traseira</button>
+            <button type="button" data-view="top" aria-pressed="false">Topo</button>
+          </div>
+          <div class="seg" role="group" aria-label="Ação do arrasto" id="drag-seg">
+            <button type="button" data-drag="rotate" aria-pressed="true">⟲ Girar</button>
+            <button type="button" data-drag="pan" aria-pressed="false">✥ Mover</button>
+          </div>
+        </div>
+        <div class="tb-group">
+          <div class="seg" role="group" aria-label="Cabos">
+            <button type="button" data-cab="all" aria-pressed="true">Todos os cabos</button>
+            <button type="button" data-cab="sel" aria-pressed="false">Só seleção</button>
+            <button type="button" data-cab="none" aria-pressed="false">Ocultar</button>
+          </div>
+          <button type="button" class="tb-btn" id="z-out" aria-label="Afastar">−</button>
+          <button type="button" class="tb-btn" id="z-in" aria-label="Aproximar">+</button>
+          <button type="button" class="tb-btn" id="z-fit" aria-label="Enquadrar tudo">⤢</button>
+        </div>
+      </div>
+      <div class="legend" id="legend"></div>
+      <div class="hint"><span id="angle"></span><br><span id="hint-text">Arraste para girar · botão direito ou Shift move · roda ou pinça dá zoom · setas giram</span></div>
+      <div id="tip" hidden></div>
+    </div>
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </div>
+
+  <section class="tablecard">
+    <div class="tablehead">
+      <h2>Portas</h2>
+      <div class="filters">
+        <input id="q" type="search" placeholder="Buscar porta, equipamento, descrição…" aria-label="Buscar">
+        <select id="f-dev" aria-label="Filtrar equipamento"><option value="">Todos os equipamentos</option></select>
+        <select id="f-st" aria-label="Filtrar status">
+          <option value="">Todos os status</option><option value="up">Ativo</option><option value="alarm">Alarme</option>
+          <option value="down">Fora</option><option value="disabled">Desabilitado</option><option value="free">Livre</option>
+        </select>
+        <select id="f-use" aria-label="Filtrar uso">
+          <option value="">Com e sem cabo</option><option value="linked">Só com cabo</option><option value="unlinked">Só sem cabo</option>
+        </select>
+      </div>
+    </div>
+    <div class="tscroll">
+      <table>
+        <thead><tr><th>Equipamento</th><th>Porta</th><th>Tipo</th><th>Status</th><th>Conectada a</th><th>Descrição</th><th>Métricas</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<!-- DADOS: substitua o conteúdo deste bloco pelo JSON do dashboard (schema iso3d/dashboard@1). Escape "</" como "<\/". -->
+<script type="application/json" id="iso-data">
+__ISO3D_DATA__
+</script>
+
+<!-- ISO3D-ENGINE:BEGIN -->
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const U = 44.45, DEG = Math.PI / 180, RACK_BASE = 100;
+const fx = n => Math.round(n * 100) / 100;
+const f4 = n => Math.round(n * 10000) / 10000;
+
+/* ---------- Vocabulário do schema ---------- */
+const PORT_SIZES = { rj45: [11.7, 10], console: [11.7, 10], mgmt: [11.7, 10], e1: [11.7, 10], sfp: [13.7, 9.4], 'sfp+': [13.7, 9.4], sfp28: [13.7, 9.4], qsfp: [18.4, 9.4], 'qsfp+': [18.4, 9.4], qsfp28: [18.4, 9.4], 'qsfp-dd': [18.4, 11], osfp: [22.6, 11], sc: [9.5, 9.5], 'sc-apc': [9.5, 9.5], lc: [6.3, 6.3], 'lc-duplex': [12.7, 6.3], usb: [12, 4.6], 'usb-c': [8.4, 2.6], 'power-ac': [24, 16], 'power-dc': [22, 12], coax: [9, 9], bnc: [9, 9], antenna: [8, 8], generic: [10, 10] };
+const OPTIC = new Set(['sfp', 'sfp+', 'sfp28', 'qsfp', 'qsfp+', 'qsfp28', 'qsfp-dd', 'osfp']);
+const FIBER = new Set([...OPTIC, 'sc', 'sc-apc', 'lc', 'lc-duplex']);
+const MEDIA = { 'fiber-sm': 'Fibra monomodo (OS2)', 'fiber-mm': 'Fibra multimodo (OM3/OM4)', dac: 'Cabo DAC', aoc: 'Cabo AOC', cat5e: 'UTP Cat5e', cat6: 'UTP Cat6', power: 'Alimentação', coax: 'Coaxial', e1: 'E1 / par metálico', generic: 'Outro' };
+const STATUS = { up: 'Ativo', alarm: 'Alarme', down: 'Fora', disabled: 'Desabilitado', free: 'Livre' };
+const ROLES = { pon: 'PON', uplink: 'Uplink', access: 'Acesso', lan: 'LAN', wan: 'WAN', mgmt: 'Gerência', console: 'Console', power: 'Alimentação', patch: 'Patch', radio: 'Rádio', generic: 'Porta' };
+const guessMedia = t => (t.startsWith('power') ? 'power' : t === 'coax' || t === 'bnc' ? 'coax' : t === 'e1' ? 'e1' : FIBER.has(t) ? 'fiber-sm' : 'cat6');
+const BODIES = ['light', 'dark', 'white', 'black'];
+
+const FACES = ['front', 'rear', 'left', 'right', 'top', 'bottom'];
+const NORMAL = { front: [0, 0, -1], rear: [0, 0, 1], left: [-1, 0, 0], right: [1, 0, 0], top: [0, 1, 0], bottom: [0, -1, 0] };
+const FACE_PT = {
+  front: (b, u, v) => [b.x + u, b.y + b.h - v, b.z],
+  rear: (b, u, v) => [b.x + b.w - u, b.y + b.h - v, b.z + b.d],
+  left: (b, u, v) => [b.x, b.y + b.h - v, b.z + b.d - u],
+  right: (b, u, v) => [b.x + b.w, b.y + b.h - v, b.z + u],
+  top: (b, u, v) => [b.x + u, b.y + b.h, b.z + b.d - v],
+  bottom: (b, u, v) => [b.x + u, b.y, b.z + v],
+};
+const FACE_DIM = { front: b => [b.w, b.h], rear: b => [b.w, b.h], left: b => [b.d, b.h], right: b => [b.d, b.h], top: b => [b.w, b.d], bottom: b => [b.w, b.d] };
+const SHADE = { front: 'front', rear: 'rear', left: 'side', right: 'side', top: 'top', bottom: 'side' };
+
+/* ---------- Dados ---------- */
+const RAW = document.getElementById('iso-data').textContent.trim();
+const hash = s => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36); };
+const STORE = 'iso3d:' + hash(RAW);
+let data = null, fatal = '';
+try { const saved = localStorage.getItem(STORE); if (saved) data = JSON.parse(saved); } catch (e) { data = null; }
+if (!data) {
+  try { data = JSON.parse(RAW); }
+  catch (e) { fatal = RAW.includes('__ISO3D_DATA__') ? 'Nenhum dado carregado. Substitua __ISO3D_DATA__ pelo JSON do dashboard.' : 'JSON inválido no bloco iso-data: ' + e.message; data = {}; }
+}
+const save = () => { try { localStorage.setItem(STORE, JSON.stringify(data)); } catch (e) {} };
+
+/* ---------- Índice ---------- */
+let IDX = null, ISSUES = [];
+function buildIndex() {
+  data.models ||= {}; data.racks ||= []; data.devices ||= []; data.links ||= [];
+  const issues = [];
+  const err = m => issues.push(['erro', m]), warn = m => issues.push(['aviso', m]);
+  const idx = { dev: new Map(), port: new Map(), link: new Map(), linkOf: new Map(), racks: new Map(), boxes: [] };
+  data.racks.forEach(r => {
+    const rr = { units: 42, width: 600, depth: 1000, frame: false, ...r, x: (r.pos && r.pos.x) || 0, z: (r.pos && r.pos.z) || 0 };
+    if (idx.racks.has(r.id)) err(`Rack "${r.id}" duplicado.`);
+    rr.used = []; idx.racks.set(r.id, rr);
+  });
+  data.devices.forEach(d => {
+    if (!d.id) { err('Equipamento sem "id".'); return; }
+    if (idx.dev.has(d.id)) { err(`Equipamento "${d.id}" duplicado.`); return; }
+    const m = data.models[d.model];
+    if (!m) { err(`Equipamento "${d.id}": o modelo "${d.model}" não está em "models".`); return; }
+    const s = m.size || {};
+    if (!(s.w > 0 && s.h > 0 && s.d > 0)) { err(`Modelo "${d.model}": "size" precisa de w, h e d em mm.`); return; }
+    let x, y, z;
+    if (d.rack) {
+      const r = idx.racks.get(d.rack);
+      if (!r) { err(`Equipamento "${d.id}": rack "${d.rack}" não existe.`); return; }
+      const u0 = d.u || 1, nu = m.rackUnits || Math.ceil(s.h / U - 0.05);
+      if (u0 < 1 || u0 + nu - 1 > r.units) warn(`"${d.id}" ocupa U${u0}–U${u0 + nu - 1}, fora do rack "${r.id}" (${r.units}U).`);
+      for (let k = u0; k < u0 + nu; k++) { if (r.used[k]) warn(`"${d.id}" e "${r.used[k]}" ocupam o mesmo U${k} no rack "${r.id}".`); r.used[k] = d.id; }
+      x = r.x + (r.width - s.w) / 2; y = RACK_BASE + (u0 - 1) * U; z = r.z + 40;
+    } else { const p = d.pos || {}; x = p.x || 0; y = p.y || 0; z = p.z || 0; }
+    const info = { id: d.id, d, m, body: BODIES.includes(m.body) ? m.body : 'light', box: { x, y, z, w: s.w, h: s.h, d: s.d }, ports: [], slots: [] };
+    idx.dev.set(d.id, info);
+    idx.boxes.push({ kind: 'dev', info, box: info.box });
+    const addPort = (key, p, face, ox, oy, label) => {
+      if (p.id == null || p.x == null || p.y == null) { err(`"${d.model}": porta sem id/x/y (${JSON.stringify(p).slice(0, 60)}).`); return; }
+      const type = PORT_SIZES[p.type] ? p.type : 'generic';
+      if (p.type && !PORT_SIZES[p.type]) warn(`"${d.model}": tipo de porta "${p.type}" desconhecido, usando "generic".`);
+      const [dw, dh] = PORT_SIZES[type];
+      const w = p.w ?? dw, h = p.h ?? dh, rot = p.rotate === 90;
+      // texto curto desenhado dentro da porta: "short" explícito, senão os dígitos finais do id (ether12 → 12), senão o id se tiver até 3 caracteres
+      const tail = String(p.id).match(/(\d+)$/);
+      const short = p.short != null ? String(p.short) : tail ? tail[1] : String(p.id).length <= 3 ? String(p.id) : '';
+      const pi = { ref: `${d.id}:${key}`, key, info, type, role: p.role || 'generic', face, x: ox + p.x, y: oy + p.y, w: rot ? h : w, h: rot ? w : h, sw: w, sh: h, rot, label, short, showLabel: p.showLabel !== false, speed: p.speed };
+      if (idx.port.has(pi.ref)) { err(`Porta "${pi.ref}" duplicada.`); return; }
+      const [fw, fh] = FACE_DIM[face](info.box);
+      if (pi.x < -0.5 || pi.y < -0.5 || pi.x + pi.w > fw + 0.5 || pi.y + pi.h > fh + 0.5) warn(`Porta "${pi.ref}" sai da face ${face} (${fw}×${fh} mm).`);
+      idx.port.set(pi.ref, pi); info.ports.push(pi);
+    };
+    (m.ports || []).forEach(p => addPort(String(p.id), p, p.face || 'front', 0, 0, p.label || String(p.id)));
+    const slotMap = new Map((m.slots || []).map(sl => [String(sl.id), sl]));
+    (m.slots || []).forEach(sl => info.slots.push({ sl, face: sl.face || 'front', card: null, type: null }));
+    for (const [sid, ctype] of Object.entries(d.cards || {})) {
+      const sl = slotMap.get(String(sid));
+      if (!sl) { err(`"${d.id}": slot "${sid}" não existe no modelo "${d.model}".`); continue; }
+      const card = ctype && (m.cards || {})[ctype];
+      if (!card) { if (ctype) err(`"${d.id}": placa "${ctype}" não está em models["${d.model}"].cards.`); continue; }
+      const so = info.slots.find(s => String(s.sl.id) === String(sid)); so.card = card; so.type = ctype;
+      (card.ports || []).forEach(p => {
+        const label = (m.portLabel || '{slot}/{port}').replaceAll('{slot}', sid).replaceAll('{port}', p.id);
+        addPort(`${sid}/${p.id}`, p, sl.face || 'front', sl.x, sl.y, p.label || label);
+      });
+    }
+    for (const k of Object.keys(d.ports || {})) if (!idx.port.has(`${d.id}:${k}`)) warn(`"${d.id}": estado informado para a porta "${k}", que não existe.`);
+  });
+  idx.racks.forEach(r => {
+    if (r.frame !== true) return;
+    const h = RACK_BASE + r.units * U + 40, t = 40;
+    for (const [px, pz] of [[0, 0], [r.width - t, 0], [0, r.depth - t], [r.width - t, r.depth - t]])
+      idx.boxes.push({ kind: 'post', box: { x: r.x + px, y: 0, z: r.z + pz, w: t, h, d: t } });
+  });
+  data.links.forEach((l, i) => {
+    if (!l.id) l.id = 'L' + (i + 1);
+    if (idx.link.has(l.id)) { err(`Cabo "${l.id}" duplicado.`); return; }
+    const a = idx.port.get(l.a), b = idx.port.get(l.b);
+    if (!a) { err(`Cabo "${l.id}": ponta A "${l.a}" não existe.`); return; }
+    if (!b) { err(`Cabo "${l.id}": ponta B "${l.b}" não existe.`); return; }
+    if (l.a === l.b) { err(`Cabo "${l.id}" liga a porta nela mesma.`); return; }
+    for (const r of [l.a, l.b]) if (idx.linkOf.has(r)) warn(`Porta "${r}" tem mais de um cabo ("${idx.linkOf.get(r).id}" e "${l.id}").`);
+    if (l.media && !MEDIA[l.media]) warn(`Cabo "${l.id}": media "${l.media}" desconhecida.`);
+    idx.link.set(l.id, l); idx.linkOf.set(l.a, l); idx.linkOf.set(l.b, l);
+  });
+  let mn = [Infinity, Infinity, Infinity], mx = [-Infinity, -Infinity, -Infinity];
+  idx.boxes.forEach(({ box: b }) => { mn = [Math.min(mn[0], b.x), Math.min(mn[1], b.y), Math.min(mn[2], b.z)]; mx = [Math.max(mx[0], b.x + b.w), Math.max(mx[1], b.y + b.h), Math.max(mx[2], b.z + b.d)]; });
+  if (!idx.boxes.length) { mn = [0, 0, 0]; mx = [1, 1, 1]; }
+  idx.center = [(mn[0] + mx[0]) / 2, (mn[1] + mx[1]) / 2, (mn[2] + mx[2]) / 2];
+  idx.top = mx[1];
+  IDX = idx; ISSUES = issues;
+}
+const portState = ref => { const p = IDX.port.get(ref); return (p && (p.info.d.ports || {})[p.key]) || null; };
+function statusOf(ref) {
+  const s = portState(ref), l = IDX.linkOf.get(ref);
+  if (s && s.status) return s.status;
+  if (l) return l.status || 'up';
+  return 'free';
+}
+const otherEnd = (l, ref) => (l.a === ref ? l.b : l.a);
+const portName = p => `${p.info.d.name || p.info.id} · ${p.label}`;
+
+/* ---------- Câmera ---------- */
+const VIEWS = { iso: { yaw: 45, pitch: 35.26 }, front: { yaw: 0, pitch: 4 }, side: { yaw: 80, pitch: 12 }, rear: { yaw: 180, pitch: 22 }, top: { yaw: 0, pitch: 88 } };
+let cam = { ...VIEWS.iso };
+let R, UP, F, C;
+const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+const add = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+const mul = (a, k) => [a[0] * k, a[1] * k, a[2] * k];
+function basis() {
+  const t = cam.yaw * DEG, f = cam.pitch * DEG;
+  R = [Math.cos(t), 0, Math.sin(t)];
+  UP = [-Math.sin(t) * Math.sin(f), Math.cos(f), Math.cos(t) * Math.sin(f)];
+  F = [-Math.sin(t) * Math.cos(f), -Math.sin(f), Math.cos(t) * Math.cos(f)];
+  C = IDX.center;
+}
+const proj = p => { const q = sub(p, C); return [dot(q, R), -dot(q, UP)]; };
+const projV = v => [dot(v, R), -dot(v, UP)];
+const visible = f => dot(NORMAL[f], F) < -1e-4;
+function faceMatrix(b, f) {
+  const o = FACE_PT[f](b, 0, 0), O = proj(o), A = projV(sub(FACE_PT[f](b, 1, 0), o)), V = projV(sub(FACE_PT[f](b, 0, 1), o));
+  return `matrix(${f4(A[0])} ${f4(A[1])} ${f4(V[0])} ${f4(V[1])} ${fx(O[0])} ${fx(O[1])})`;
+}
+
+/* ---------- Desenho ---------- */
+let sel = null;        // {kind:'port',ref} | {kind:'device',id,slot?} | {kind:'link',id}
+let cableMode = 'all';
+const inkFor = body => (body === 'light' || body === 'white' ? 'ink-dark' : 'ink-light');
+const colorAttr = c => (!c ? '' : /^(ok|up|alarm|down|disabled|off|free)$/.test(c) ? '' : `style="fill:${esc(c)}"`);
+function drawItem(it, ox, oy, body) {
+  const x = ox + (it.x || 0), y = oy + (it.y || 0), w = it.w || 0, h = it.h || 0;
+  switch (it.type) {
+    case 'rect': return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${it.r || 0}" class="${it.fill ? '' : 'cage'}" ${it.fill ? `style="fill:${esc(it.fill)};${it.stroke ? 'stroke:' + esc(it.stroke) + ';stroke-width:.4' : ''}"` : ''}/>`;
+    case 'grille': return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${it.r || 1}" fill="url(#p-grille)"/>`;
+    case 'perf': return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#p-perf)"/>`;
+    case 'hex': return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#p-hex)"/>`;
+    case 'slits': return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#p-slits)"/>`;
+    case 'screw': return `<circle cx="${x}" cy="${y}" r="${it.r || 1.6}" class="screw"/>`;
+    case 'handle': return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${Math.min(w, h) / 2}" class="screw"/>`;
+    case 'display': return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx=".8" class="display"/>` + (it.text ? `<text x="${x + 2}" y="${y + h / 2}" class="silk" style="font-size:${it.size || h * .45}px;fill:#5fe0a0" dominant-baseline="central">${esc(it.text)}</text>` : '');
+    case 'led': { const st = it.color && /^(ok|up|alarm|down|disabled)$/.test(it.color) ? 'st-' + (it.color === 'ok' ? 'up' : it.color) : ''; return `<circle cx="${x}" cy="${y}" r="${it.r || 1}" class="led ${st}" ${colorAttr(it.color)}/>`; }
+    case 'label': case 'logo': {
+      const size = it.size || (it.type === 'logo' ? 6 : 3.2);
+      const tr = it.rotate ? ` transform="rotate(${it.rotate} ${x} ${y})"` : '';
+      return `<text x="${x}" y="${y}" class="${it.type === 'logo' ? 'silk-d' : 'silk'} ${it.color ? '' : inkFor(body)}" style="font-size:${size}px;${it.color ? 'fill:' + esc(it.color) : ''}" text-anchor="${it.anchor || 'start'}"${tr}>${esc(it.text)}</text>`;
+    }
+    default: return '';
+  }
+}
+function portShape(p, linked, media) {
+  const w = p.sw, h = p.sh, x = -w / 2, y = -h / 2;
+  const plug = linked ? `style="fill:var(--m-${media})"` : '';
+  switch (p.type) {
+    case 'rj45': case 'console': case 'mgmt': case 'e1':
+      return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx=".6" class="cage"/>` +
+        (linked ? `<rect x="${x + 1}" y="${y + 1}" width="${w - 2}" height="${h - 2}" rx=".5" class="plug" ${plug}/>` :
+          `<path d="M${x + 1.2} ${y + 1.2}h${w - 2.4}v${h - 4}h-2.5v1.6h-${w - 7.4}v-1.6h-2.5z" class="cage-in"/>`);
+    case 'sc': case 'sc-apc':
+      return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx=".8" class="${p.type === 'sc-apc' ? 'adapter-apc' : 'adapter-sc'}"/>` +
+        (linked ? `<rect x="${x + 1.6}" y="${y + 1.6}" width="${w - 3.2}" height="${h - 3.2}" rx=".6" class="plug" ${plug}/>` : `<rect x="${x + 2.6}" y="${y + 2.6}" width="${w - 5.2}" height="${h - 5.2}" class="cage-in"/>`);
+    case 'lc': case 'lc-duplex': {
+      const n = p.type === 'lc' ? 1 : 2, cw = w / n;
+      let s = `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx=".6" class="adapter-lc"/>`;
+      for (let i = 0; i < n; i++) s += linked ? `<rect x="${x + i * cw + .8}" y="${y + .8}" width="${cw - 1.6}" height="${h - 1.6}" rx=".4" class="plug" ${plug}/>` : `<rect x="${x + i * cw + 1.4}" y="${y + 1.4}" width="${cw - 2.8}" height="${h - 2.8}" class="cage-in"/>`;
+      return s;
+    }
+    case 'usb': case 'usb-c': return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${p.type === 'usb-c' ? h / 2 : .4}" class="cage"/><rect x="${x + 1.5}" y="${y + h * .3}" width="${w - 3}" height="${h * .4}" class="screw"/>`;
+    case 'power-ac':
+      return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" class="cage"/>` + (linked ? `<rect x="${x + 1.5}" y="${y + 1.5}" width="${w - 3}" height="${h - 3}" rx="1.6" class="plug" ${plug}/>` :
+        `<rect x="${x + w * .3}" y="${y + h * .3}" width="1.4" height="${h * .3}" class="screw"/><rect x="${x + w * .7 - 1.4}" y="${y + h * .3}" width="1.4" height="${h * .3}" class="screw"/><rect x="${-0.7}" y="${y + h * .62}" width="1.4" height="${h * .22}" class="screw"/>`);
+    case 'power-dc': return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1" class="cage"/><circle cx="${x + w * .3}" cy="0" r="${h * .22}" class="screw"/><circle cx="${x + w * .7}" cy="0" r="${h * .22}" class="screw"/>` + (linked ? `<rect x="${x}" y="${y + h - 2}" width="${w}" height="2" ${plug}/>` : '');
+    case 'coax': case 'bnc': case 'antenna': return `<circle r="${w / 2}" class="screw"/><circle r="${w / 2 - 1.6}" class="cage"/>` + (linked ? `<circle r="${w / 2 - 2.4}" ${plug}/>` : `<circle r=".7" class="screw"/>`);
+    default:
+      if (OPTIC.has(p.type)) return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx=".6" class="cage" style="stroke:#59636e;stroke-width:.3"/>` +
+        (linked ? `<rect x="${x + 1.3}" y="${y + 1.3}" width="${w - 2.6}" height="${h - 2.6}" rx=".5" class="plug" ${plug}/>` : `<rect x="${x + 1.3}" y="${y + 1.8}" width="${w - 2.6}" height="${h - 3.6}" class="cage-in"/>`);
+      return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx=".8" class="cage"/>` + (linked ? `<rect x="${x + 1.3}" y="${y + 1.3}" width="${w - 2.6}" height="${h - 2.6}" class="plug" ${plug}/>` : '');
+  }
+}
+function drawPort(p) {
+  const l = IDX.linkOf.get(p.ref), st = statusOf(p.ref), media = l ? (MEDIA[l.media] ? l.media : 'generic') : 'generic';
+  const cx = p.x + p.w / 2, cy = p.y + p.h / 2;
+  const isSel = (sel && sel.kind === 'port' && sel.ref === p.ref) || (sel && sel.kind === 'link' && l && l.id === sel.id) ||
+    (sel && sel.kind === 'port' && l && otherEnd(l, p.ref) === sel.ref);
+  let s = `<g class="port" data-ref="${esc(p.ref)}"><g transform="translate(${fx(cx)} ${fx(cy)})${p.rot ? ' rotate(90)' : ''}">${portShape(p, !!l, media)}`;
+  if (p.showLabel && p.short && p.sh >= 5.5 && p.short.length <= 4) s += `<text class="pnum${l ? ' on' : ''}" y=".2" style="font-size:${Math.min(3.4, p.sh * .36)}px"${p.rot ? ' transform="rotate(-90)"' : ''}>${esc(p.short)}</text>`;
+  s += `</g>`;
+  if (st !== 'free') s += `<rect x="${fx(p.x)}" y="${fx(p.y + p.h + .5)}" width="${fx(p.w)}" height="1.1" class="stripe st-${st}"/>`;
+  if (isSel) s += `<rect x="${fx(p.x - 1.4)}" y="${fx(p.y - 1.4)}" width="${fx(p.w + 2.8)}" height="${fx(p.h + 4)}" rx="1.4" class="ring"/>`;
+  return s + `</g>`;
+}
+function faceContent(info, face) {
+  const m = info.m, out = [];
+  ((m.faces && m.faces[face] && m.faces[face].items) || []).forEach(it => out.push(drawItem(it, 0, 0, info.body)));
+  info.slots.filter(s => s.face === face).forEach(s => {
+    const sl = s.sl, selSlot = sel && sel.kind === 'device' && sel.id === info.id && String(sel.slot) === String(sl.id);
+    let g = `<g class="slot${selSlot ? ' sel' : ''}" data-slot="${esc(sl.id)}">`;
+    if (s.card) {
+      const cb = BODIES.includes(s.card.body) ? s.card.body : info.body;
+      g += `<rect x="${sl.x}" y="${sl.y}" width="${sl.w}" height="${sl.h}" rx=".6" class="cardface card-${cb}"/>`;
+      (s.card.items || []).forEach(it => { g += drawItem(it, sl.x, sl.y, cb); });
+    } else if (m.slotFiller !== false) {
+      g += `<rect x="${sl.x}" y="${sl.y}" width="${sl.w}" height="${sl.h}" class="cardface filler"/>`;
+      if (sl.h > 30 || sl.w > 30) g += `<rect x="${sl.x + Math.min(4, sl.w * .2)}" y="${sl.y + Math.min(14, sl.h * .1)}" width="${sl.w - 2 * Math.min(4, sl.w * .2)}" height="${sl.h - 2 * Math.min(14, sl.h * .1)}" fill="url(#p-slits)"/>`;
+    }
+    out.push(g + `</g>`);
+  });
+  info.ports.filter(p => p.face === face).forEach(p => out.push(drawPort(p)));
+  return out.join('');
+}
+function drawBox(item) {
+  const b = item.box, info = item.info;
+  const body = item.kind === 'post' ? 'post' : info.body;
+  let s = '';
+  for (const f of FACES) {
+    if (!visible(f)) continue;
+    const [fw, fh] = FACE_DIM[f](b);
+    s += `<g transform="${faceMatrix(b, f)}"><rect width="${fx(fw)}" height="${fx(fh)}" class="face f-${body} ${SHADE[f]}"/>`;
+    if (info) s += faceContent(info, f);
+    else if (f === 'front' || f === 'rear') for (let v = RACK_BASE + 8; v < fh - 10; v += U / 3) s += `<rect x="${fw / 2 - 2.5}" y="${fh - v}" width="5" height="5" rx="1" class="cage"/>`;
+    s += `</g>`;
+  }
+  if (!info) return s;
+  const isSel = sel && sel.kind === 'device' && sel.id === info.id;
+  return `<g class="device${isSel ? ' sel' : ''}" data-dev="${esc(info.id)}">${s}</g>`;
+}
+function drawFloors() {
+  let s = '';
+  IDX.racks.forEach(r => {
+    const pts = [[r.x - 20, 0, r.z - 20], [r.x + r.width + 20, 0, r.z - 20], [r.x + r.width + 20, 0, r.z + r.depth + 20], [r.x - 20, 0, r.z + r.depth + 20]].map(proj);
+    s += `<polygon class="floor" points="${pts.map(p => fx(p[0]) + ',' + fx(p[1])).join(' ')}"/>`;
+    const b = { x: r.x, y: 0, z: r.z - 140, w: r.width, h: 0, d: 100 };
+    if (cam.pitch > 8) s += `<g transform="${faceMatrix(b, 'top')}"><text x="${r.width / 2}" y="70" text-anchor="middle" class="floor-label">${esc(r.name || r.id)}</text></g>`;
+  });
+  return s;
+}
+function endpoint(p) {
+  const b = p.info.box, c = FACE_PT[p.face](b, p.x + p.w / 2, p.y + p.h / 2);
+  return [c, NORMAL[p.face]];
+}
+function route(l, lane) {
+  const A = IDX.port.get(l.a), B = IDX.port.get(l.b);
+  const [pa, na] = endpoint(A), [pb, nb] = endpoint(B);
+  const c = 20 + (lane % 6) * 5;
+  const a1 = add(pa, mul(na, c)), b1 = add(pb, mul(nb, c));
+  if (Array.isArray(l.via) && l.via.length) return [pa, a1, ...l.via, b1, pb];
+  const same = na.join() === nb.join() && Math.abs(dot(sub(a1, b1), na)) < 80;
+  if (same) {
+    if (Math.abs(pa[1] - pb[1]) < 14) { const y = Math.min(pa[1], pb[1]) - 16 - (lane % 5) * 3; return [pa, a1, [a1[0], y, a1[2]], [b1[0], y, b1[2]], b1, pb]; }
+    return [pa, a1, [a1[0], b1[1], a1[2]], b1, pb];
+  }
+  const yT = IDX.top + 120 + (lane % 8) * 8;
+  return [pa, a1, [a1[0], yT, a1[2]], [b1[0], yT, a1[2]], [b1[0], yT, b1[2]], b1, pb];
+}
+function rpath(pts, r) {
+  const q = pts.filter((p, i) => i === 0 || Math.hypot(p[0] - pts[i - 1][0], p[1] - pts[i - 1][1]) > 0.05);
+  if (q.length < 2) return '';
+  let d = `M${fx(q[0][0])} ${fx(q[0][1])}`;
+  for (let i = 1; i < q.length - 1; i++) {
+    const a = q[i - 1], b = q[i], c = q[i + 1];
+    const l1 = Math.hypot(a[0] - b[0], a[1] - b[1]), l2 = Math.hypot(c[0] - b[0], c[1] - b[1]), rr = Math.min(r, l1 / 2, l2 / 2);
+    const p1 = [b[0] + (a[0] - b[0]) * rr / l1, b[1] + (a[1] - b[1]) * rr / l1], p2 = [b[0] + (c[0] - b[0]) * rr / l2, b[1] + (c[1] - b[1]) * rr / l2];
+    d += ` L${fx(p1[0])} ${fx(p1[1])} Q${fx(b[0])} ${fx(b[1])} ${fx(p2[0])} ${fx(p2[1])}`;
+  }
+  const e = q[q.length - 1];
+  return d + ` L${fx(e[0])} ${fx(e[1])}`;
+}
+function linkFocused(l) {
+  if (!sel) return false;
+  if (sel.kind === 'link') return sel.id === l.id;
+  if (sel.kind === 'port') return l.a === sel.ref || l.b === sel.ref;
+  if (sel.kind === 'device') {
+    const on = r => { const p = IDX.port.get(r); return p && p.info.id === sel.id && (sel.slot == null || p.key.split('/')[0] === String(sel.slot)); };
+    return on(l.a) || on(l.b);
+  }
+  return false;
+}
+function drawCables() {
+  if (cableMode === 'none') return '';
+  const hot = [], cold = [];
+  [...IDX.link.values()].forEach((l, i) => (linkFocused(l) ? hot : cold).push([l, i]));
+  if (cableMode === 'sel') cold.length = 0;
+  const one = ([l, i], isHot) => {
+    const d = rpath(route(l, i).map(proj), 7);
+    const A = IDX.port.get(l.a), B = IDX.port.get(l.b);
+    const media = MEDIA[l.media] ? l.media : 'generic', st = l.status || 'up';
+    const cls = ['cab', st, isHot ? 'hot' : sel ? 'dim' : '', !isHot && (!visible(A.face) || !visible(B.face)) ? 'behind' : ''].join(' ');
+    return `<g class="${cls}"><path class="casing" d="${d}"/><path class="cable" style="stroke:${l.color ? esc(l.color) : `var(--m-${media})`}" d="${d}"/>` +
+      (isHot && st !== 'down' ? `<path class="flow" d="${d}"/>` : '') + `<path class="hit" data-link="${esc(l.id)}" d="${d}"/></g>`;
+  };
+  return cold.map(x => one(x, false)).join('') + hot.map(x => one(x, true)).join('');
+}
+const world = $('#world'), svg = $('#scene');
+function render() {
+  basis();
+  const items = IDX.boxes.slice().sort((p, q) => {
+    const cp = [p.box.x + p.box.w / 2, p.box.y + p.box.h / 2, p.box.z + p.box.d / 2], cq = [q.box.x + q.box.w / 2, q.box.y + q.box.h / 2, q.box.z + q.box.d / 2];
+    return dot(cq, F) - dot(cp, F);
+  });
+  world.innerHTML = drawFloors() + items.map(drawBox).join('') + drawCables();
+}
+
+/* ---------- Viewport ---------- */
+let vb = { x: -500, y: -500, w: 1000, h: 1000 };
+const applyVB = () => svg.setAttribute('viewBox', `${fx(vb.x)} ${fx(vb.y)} ${fx(vb.w)} ${fx(vb.h)}`);
+function fit() {
+  let b; try { b = world.getBBox(); } catch (e) { return; }
+  if (!b.width) return;
+  const pad = 40, r = svg.clientWidth / Math.max(1, svg.clientHeight);
+  let w = b.width + pad * 2, h = b.height + pad * 2 + 90;
+  if (w / h > r) h = w / r; else w = h * r;
+  vb = { x: b.x + b.width / 2 - w / 2, y: b.y + b.height / 2 - h / 2 + 10, w, h };
+  applyVB();
+}
+function zoomAt(f, cx, cy) {
+  const nw = Math.min(40000, Math.max(30, vb.w * f)), k = nw / vb.w;
+  vb = { x: cx - (cx - vb.x) * k, y: cy - (cy - vb.y) * k, w: nw, h: vb.h * k };
+  applyVB();
+}
+const toWorld = (ex, ey) => { const r = svg.getBoundingClientRect(); return [vb.x + (ex - r.left) / r.width * vb.w, vb.y + (ey - r.top) / r.height * vb.h]; };
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const wrap = a => ((a + 180) % 360 + 360) % 360 - 180;
+let raf = 0;
+const queueRender = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; render(); showAngle(); }); };
+let dragMode = 'rotate', drag = null, dragged = false, pinch = null;
+const pointers = new Map();
+svg.addEventListener('wheel', e => { e.preventDefault(); const [x, y] = toWorld(e.clientX, e.clientY); zoomAt(Math.exp(e.deltaY * 0.0015), x, y); }, { passive: false });
+svg.addEventListener('contextmenu', e => e.preventDefault());
+svg.addEventListener('pointerdown', e => {
+  pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (pointers.size === 2) {
+    const [a, b] = [...pointers.values()];
+    pinch = { d: Math.hypot(a.x - b.x, a.y - b.y) || 1, mid: toWorld((a.x + b.x) / 2, (a.y + b.y) / 2), vb: { ...vb } };
+    drag = null; dragged = true; return;
+  }
+  drag = { x: e.clientX, y: e.clientY, vb: { ...vb }, yaw: cam.yaw, pitch: cam.pitch, id: e.pointerId, pan: dragMode === 'pan' || e.button === 1 || e.button === 2 || e.shiftKey };
+  dragged = false;
+});
+svg.addEventListener('pointermove', e => {
+  if (pointers.has(e.pointerId)) pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (pinch && pointers.size === 2) {
+    const [a, b] = [...pointers.values()], r = svg.getBoundingClientRect();
+    const w = clamp(pinch.vb.w * pinch.d / (Math.hypot(a.x - b.x, a.y - b.y) || 1), 30, 40000), h = pinch.vb.h * w / pinch.vb.w;
+    vb = { x: pinch.mid[0] - ((a.x + b.x) / 2 - r.left) / r.width * w, y: pinch.mid[1] - ((a.y + b.y) / 2 - r.top) / r.height * h, w, h };
+    applyVB(); return;
+  }
+  if (drag) {
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!dragged && Math.hypot(dx, dy) > 4) { dragged = true; svg.setPointerCapture(drag.id); svg.classList.add('panning'); tip.hidden = true; }
+    if (dragged) {
+      if (drag.pan) { const r = svg.getBoundingClientRect(); vb.x = drag.vb.x - dx / r.width * vb.w; vb.y = drag.vb.y - dy / r.height * vb.h; applyVB(); }
+      else { cam.yaw = wrap(drag.yaw - dx * 0.4); cam.pitch = clamp(drag.pitch + dy * 0.3, -30, 89); markPreset(null); queueRender(); }
+      return;
+    }
+  }
+  hover(e);
+});
+const endDrag = e => { pointers.delete(e.pointerId); if (pointers.size < 2) pinch = null; if (!pointers.size) { drag = null; svg.classList.remove('panning'); } };
+svg.addEventListener('pointerup', endDrag); svg.addEventListener('pointercancel', endDrag);
+svg.addEventListener('pointerleave', () => { tip.hidden = true; });
+svg.addEventListener('keydown', e => {
+  const st = e.shiftKey ? 15 : 5;
+  if (e.key === 'ArrowLeft') cam.yaw = wrap(cam.yaw + st);
+  else if (e.key === 'ArrowRight') cam.yaw = wrap(cam.yaw - st);
+  else if (e.key === 'ArrowUp') cam.pitch = clamp(cam.pitch + st, -30, 89);
+  else if (e.key === 'ArrowDown') cam.pitch = clamp(cam.pitch - st, -30, 89);
+  else if (e.key === '+' || e.key === '=') { zoomAt(0.8, vb.x + vb.w / 2, vb.y + vb.h / 2); e.preventDefault(); return; }
+  else if (e.key === '-') { zoomAt(1.25, vb.x + vb.w / 2, vb.y + vb.h / 2); e.preventDefault(); return; }
+  else if (e.key === 'Escape') { sel = null; refresh(); return; }
+  else return;
+  e.preventDefault(); markPreset(null); queueRender();
+});
+svg.addEventListener('click', e => {
+  if (dragged) { dragged = false; return; }
+  const t = e.target, pt = t.closest('[data-ref]'), lk = t.closest('[data-link]'), sl = t.closest('[data-slot]'), dv = t.closest('[data-dev]');
+  if (pt) sel = { kind: 'port', ref: pt.dataset.ref };
+  else if (lk) sel = { kind: 'link', id: lk.dataset.link };
+  else if (dv) sel = { kind: 'device', id: dv.dataset.dev, slot: sl ? sl.dataset.slot : null };
+  else sel = null;
+  refresh();
+});
+$('#z-in').onclick = () => (V3.on ? dolly3D(0.75) : zoomAt(0.75, vb.x + vb.w / 2, vb.y + vb.h / 2));
+$('#z-out').onclick = () => (V3.on ? dolly3D(1.33) : zoomAt(1.33, vb.x + vb.w / 2, vb.y + vb.h / 2));
+$('#z-fit').onclick = () => (V3.on ? place3D(cam.yaw, cam.pitch) : fit());
+window.addEventListener('resize', () => { if (!V3.on) fit(); });
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function markPreset(name) { document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', b.dataset.view === name)); }
+function showAngle() { $('#angle').textContent = `Giro ${Math.round(cam.yaw)}° · Inclinação ${Math.round(cam.pitch)}°`; }
+function setView(name) {
+  markPreset(name);
+  if (V3.on) { cam = { ...VIEWS[name] }; showAngle(); tween3D(cam.yaw, cam.pitch); return; }
+  const from = { ...cam }, to = VIEWS[name], dyaw = wrap(to.yaw - from.yaw);
+  if (reduce) { cam = { ...to }; render(); fit(); showAngle(); return; }
+  const t0 = performance.now();
+  const step = now => {
+    const t = Math.min(1, (now - t0) / 560), e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    cam.yaw = wrap(from.yaw + dyaw * e); cam.pitch = from.pitch + (to.pitch - from.pitch) * e;
+    render(); fit(); showAngle();
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+document.querySelectorAll('[data-view]').forEach(b => b.onclick = () => setView(b.dataset.view));
+document.querySelectorAll('[data-drag]').forEach(b => b.onclick = () => { dragMode = b.dataset.drag; document.querySelectorAll('[data-drag]').forEach(x => x.setAttribute('aria-pressed', x === b)); });
+document.querySelectorAll('[data-cab]').forEach(b => b.onclick = () => { cableMode = b.dataset.cab; document.querySelectorAll('[data-cab]').forEach(x => x.setAttribute('aria-pressed', x === b)); if (V3.on) { buildCables3D(); update3DSelection(); } else render(); });
+
+const tip = $('#tip'), stage = $('#stage');
+function tipHTML(t) {
+  if (!t) return '';
+  if (t.kind === 'port') {
+    const p = IDX.port.get(t.ref); if (!p) return '';
+    const l = IDX.linkOf.get(p.ref), st = statusOf(p.ref), ps = portState(p.ref);
+    let html = `<b>${esc(portName(p))}</b> · ${esc(p.type.toUpperCase())} · ${STATUS[st] || st}`;
+    if (l) { const o = IDX.port.get(otherEnd(l, p.ref)); html += `<br>→ ${esc(portName(o))}`; }
+    if (ps && ps.desc) html += `<br>${esc(ps.desc)}`;
+    return html;
+  }
+  if (t.kind === 'link') {
+    const l = IDX.link.get(t.id); if (!l) return '';
+    return `<b>${esc(l.label || l.id)}</b> · ${esc(MEDIA[l.media] || 'Cabo')}<br>${esc(portName(IDX.port.get(l.a)))} ↔ ${esc(portName(IDX.port.get(l.b)))}`;
+  }
+  if (t.kind === 'device') { const i = IDX.dev.get(t.id); return i ? `<b>${esc(i.d.name || i.id)}</b> · ${esc(i.m.name || i.d.model)}` : ''; }
+  return '';
+}
+function placeTip(e, html) {
+  if (!html) { tip.hidden = true; return; }
+  tip.innerHTML = html; tip.hidden = false;
+  const r = stage.getBoundingClientRect();
+  let x = e.clientX - r.left + 14; const y = e.clientY - r.top + 14;
+  if (x + tip.offsetWidth > r.width - 8) x = e.clientX - r.left - tip.offsetWidth - 10;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hover(e) {
+  const t = e.target, pt = t.closest && t.closest('[data-ref]'), lk = t.closest && t.closest('[data-link]');
+  const html = tipHTML(pt ? { kind: 'port', ref: pt.dataset.ref } : lk ? { kind: 'link', id: lk.dataset.link } : null);
+  if (!html) { tip.hidden = true; return; }
+  tip.innerHTML = html; tip.hidden = false;
+  const r = stage.getBoundingClientRect();
+  let x = e.clientX - r.left + 14; const y = e.clientY - r.top + 14;
+  if (x + tip.offsetWidth > r.width - 8) x = e.clientX - r.left - tip.offsetWidth - 10;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+
+/* ---------- Resumo e legenda ---------- */
+function renderHeader() {
+  $('#title').textContent = data.title || 'Mapa de equipamentos';
+  $('#eyebrow').textContent = data.subtitle || 'Mapa de equipamentos';
+  const ports = [...IDX.port.values()], linked = ports.filter(p => IDX.linkOf.has(p.ref));
+  const cnt = st => ports.filter(p => statusOf(p.ref) === st).length;
+  const chip = (v, l, c = '') => `<div class="chip ${c}"><b>${esc(v)}</b><span>${esc(l)}</span></div>`;
+  let h = chip(IDX.dev.size, 'Equipamentos') + chip(IDX.link.size, 'Cabos') + chip(`${linked.length}/${ports.length}`, 'Portas em uso') +
+    chip(cnt('alarm'), 'Portas em alarme', 'alarm') + chip(cnt('down'), 'Portas fora', 'down');
+  (data.kpis || []).forEach(k => { h += chip(k.value, k.label, k.tone || ''); });
+  const errs = ISSUES.filter(i => i[0] === 'erro').length;
+  if (ISSUES.length) h += chip(ISSUES.length, errs ? `Problemas nos dados (${errs} erros)` : 'Avisos nos dados', errs ? 'crit' : 'warn');
+  $('#chips').innerHTML = h;
+  const media = [...new Set([...IDX.link.values()].map(l => (MEDIA[l.media] ? l.media : 'generic')))];
+  $('#legend').innerHTML = ['up', 'alarm', 'down', 'free'].map(s => `<span><i class="lg-dot" style="background:var(--${s === 'up' ? 'ok' : s === 'free' ? 'off' : s})"></i>${STATUS[s]}</span>`).join('') +
+    media.map(m => `<span><i class="lg-line" style="background:var(--m-${m})"></i>${MEDIA[m]}</span>`).join('');
+  const fd = $('#f-dev'), cur = fd.value;
+  fd.innerHTML = `<option value="">Todos os equipamentos</option>` + [...IDX.dev.values()].map(i => `<option value="${esc(i.id)}">${esc(i.d.name || i.id)}</option>`).join('');
+  fd.value = cur;
+}
+
+/* ---------- Painel ---------- */
+const kvRows = obj => Object.entries(obj || {}).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('');
+function issuesBlock() {
+  if (!ISSUES.length) return '';
+  return `<h3>Problemas nos dados</h3><ul class="issues">${ISSUES.slice(0, 40).map(([lv, m]) => `<li class="${lv}">${esc(m)}</li>`).join('')}</ul>`;
+}
+function ioBlock() {
+  return `<details class="io" id="io"><summary>Importar / exportar dados (JSON)</summary>
+    <div class="note">As edições ficam salvas só neste navegador. Copie o JSON para guardar, versionar ou reconstruir o painel.</div>
+    <textarea id="io-text" spellcheck="false" aria-label="Dados em JSON"></textarea>
+    <div class="btn-row"><button type="button" class="btn" id="io-copy">Copiar</button><button type="button" class="btn" id="io-apply">Aplicar JSON</button><button type="button" class="btn" id="io-reset">Descartar edições</button></div>
+    <div class="note">draw.io: gera um diagrama editável com frente e traseira de cada rack e os cabos ligando as portas. Copie e cole em draw.io (Extras › Editar diagrama) ou baixe o arquivo .drawio.</div>
+    <div class="btn-row"><button type="button" class="btn" id="dio-gen">Gerar draw.io</button><button type="button" class="btn" id="dio-dl">Baixar .drawio</button><button type="button" class="btn" id="json-dl">Baixar JSON</button><span class="toast" id="io-msg"></span></div></details>`;
+}
+let ioOpen = false;
+function bindIO() {
+  const d = $('#io'); if (!d) return;
+  const ta = $('#io-text'), msg = $('#io-msg');
+  const fill = () => { ta.value = JSON.stringify(data, null, 1); };
+  d.open = ioOpen; if (ioOpen) fill();
+  d.ontoggle = () => { ioOpen = d.open; if (d.open) fill(); };
+  $('#io-copy').onclick = () => copy(ta.value, ta, msg);
+  const fname = ext => (data.title || 'mapa').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w-]+/g, '-').toLowerCase() + ext;
+  const note = (t, bad) => { msg.style.color = bad ? 'var(--down)' : ''; msg.textContent = t; };
+  $('#dio-gen').onclick = () => { try { ta.value = exportDrawio(); note('XML do draw.io gerado. Copie ou baixe.'); } catch (e) { note('Falha ao gerar: ' + e.message, true); } };
+  $('#dio-dl').onclick = () => { try { const ok = download(fname('.drawio'), exportDrawio(), 'application/xml'); note(ok ? 'Download iniciado.' : 'Este visualizador bloqueia downloads. Use "Gerar draw.io" e copie.', !ok); } catch (e) { note('Falha ao gerar: ' + e.message, true); } };
+  $('#json-dl').onclick = () => { const ok = download(fname('.json'), JSON.stringify(data, null, 1), 'application/json'); note(ok ? 'Download iniciado.' : 'Este visualizador bloqueia downloads. Use "Copiar".', !ok); };
+  $('#io-apply').onclick = () => { try { const s = JSON.parse(ta.value); if (!s || typeof s !== 'object') throw 0; data = s; sel = null; commit(true); } catch (e) { msg.style.color = 'var(--down)'; msg.textContent = 'JSON inválido.'; } };
+  const rs = $('#io-reset');
+  rs.onclick = () => { if (rs.dataset.armed) { try { localStorage.removeItem(STORE); } catch (e) {} data = JSON.parse(RAW); sel = null; buildIndex(); refresh(); fit(); } else { rs.dataset.armed = 1; rs.textContent = 'Clique de novo para confirmar'; } };
+}
+function copy(text, el, ok) {
+  const done = () => { ok.style.color = ''; ok.textContent = 'Copiado'; setTimeout(() => { ok.textContent = ''; }, 1600); };
+  const fallback = () => { if (el.select) el.select(); else { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); } };
+  try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+}
+function portGrid(ports) {
+  return `<div class="port-grid">${ports.map(p => `<button type="button" class="st-${statusOf(p.ref)}" data-go="${esc(p.ref)}" title="${esc(p.label)}">${esc(String(p.label).length > 7 ? p.key : p.label)}</button>`).join('')}</div>`;
+}
+function freePortOptions(exceptRef, type) {
+  let o = '';
+  IDX.dev.forEach(info => {
+    const free = info.ports.filter(p => p.ref !== exceptRef && !IDX.linkOf.has(p.ref));
+    if (!free.length) return;
+    o += `<optgroup label="${esc(info.d.name || info.id)}">` + free.map(p => `<option value="${esc(p.ref)}">${esc(p.label)} · ${esc(p.type)}</option>`).join('') + `</optgroup>`;
+  });
+  return o;
+}
+const mediaOptions = cur => Object.entries(MEDIA).map(([k, v]) => `<option value="${k}"${k === cur ? ' selected' : ''}>${v}</option>`).join('');
+const statusOptions = (cur, auto) => (auto ? `<option value="">Automático</option>` : '') + ['up', 'alarm', 'down', 'disabled'].map(s => `<option value="${s}"${s === cur ? ' selected' : ''}>${STATUS[s]}</option>`).join('');
+function renderPanel() {
+  const el = $('#panel');
+  if (sel && sel.kind === 'port' && !IDX.port.has(sel.ref)) sel = null;
+  if (sel && sel.kind === 'link' && !IDX.link.has(sel.id)) sel = null;
+  if (sel && sel.kind === 'device' && !IDX.dev.has(sel.id)) sel = null;
+  if (!sel) {
+    el.innerHTML = `<h2>Detalhes</h2><div class="sub">Clique numa porta, num equipamento, numa placa ou num cabo. Arraste a cena para girar.</div>
+      <dl class="kv">${[...IDX.dev.values()].map(i => `<dt>${esc(i.d.name || i.id)}</dt><dd>${esc(i.m.vendor ? i.m.vendor + ' ' : '')}${esc(i.m.name || i.d.model)}</dd>`).join('')}</dl>
+      ${issuesBlock()}${ioBlock()}`;
+    bindIO(); return;
+  }
+  if (sel.kind === 'device') return renderDevice(el);
+  if (sel.kind === 'link') return renderLink(el);
+  renderPort(el);
+}
+function renderDevice(el) {
+  const info = IDX.dev.get(sel.id), d = info.d, m = info.m;
+  const slot = sel.slot != null ? info.slots.find(s => String(s.sl.id) === String(sel.slot)) : null;
+  const ports = slot ? info.ports.filter(p => p.key.split('/')[0] === String(slot.sl.id) && p.key.includes('/')) : info.ports;
+  const used = ports.filter(p => IDX.linkOf.has(p.ref)).length;
+  const src = m.source || {};
+  el.innerHTML = `<h2>${slot ? 'Placa' : 'Equipamento'}</h2>
+    <div class="pid-row"><div class="pid">${esc(slot ? `${d.name || d.id} · slot ${slot.sl.label || slot.sl.id}` : d.name || d.id)}</div>${d.status ? `<span class="pill ${esc(d.status)}">${STATUS[d.status] || esc(d.status)}</span>` : ''}</div>
+    <div class="sub">${slot ? (slot.card ? `${esc(slot.card.name || slot.type)}${slot.card.desc ? ' · ' + esc(slot.card.desc) : ''}` : 'Slot vazio') : `${esc(m.vendor || '')} ${esc(m.name || d.model)}${m.category ? ' · ' + esc(m.category) : ''}`}</div>
+    <dl class="kv">
+      ${slot ? '' : `<dt>Posição</dt><dd>${d.rack ? `${esc(IDX.racks.get(d.rack)?.name || d.rack)} · U${d.u || 1}` : 'livre'}</dd><dt>Dimensões</dt><dd>${m.size.w}×${m.size.h}×${m.size.d} mm</dd>`}
+      <dt>Portas em uso</dt><dd>${used}/${ports.length}</dd>
+      ${slot ? '' : kvRows(d.info)}
+      ${slot || !src.confidence ? '' : `<dt>Fidelidade do modelo</dt><dd>${esc(src.confidence)}</dd>`}
+    </dl>
+    ${!slot && src.notes ? `<div class="note">${esc(src.notes)}</div>` : ''}
+    ${!slot && Array.isArray(src.questions) && src.questions.length ? `<h3>Pendências do modelo</h3><ul class="issues">${src.questions.map(q => `<li class="aviso">${esc(q)}</li>`).join('')}</ul>` : ''}
+    ${slot && !(slot.sl.fixed) ? `<div class="field"><label for="f-card">Placa instalada</label><select id="f-card"><option value="">Vazio</option>${Object.entries(m.cards || {}).filter(([k, c]) => !slot.sl.accepts || slot.sl.accepts.includes(c.role) || slot.sl.accepts.includes(k)).map(([k, c]) => `<option value="${esc(k)}"${slot.type === k ? ' selected' : ''}>${esc(c.name || k)}</option>`).join('')}</select></div>` : ''}
+    ${ports.length ? `<h3>Portas</h3>${portGrid(ports)}` : ''}
+    ${ioBlock()}`;
+  el.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { sel = { kind: 'port', ref: b.dataset.go }; refresh(); });
+  const fc = $('#f-card');
+  if (fc) fc.onchange = e => {
+    const v = e.target.value, sid = String(slot.sl.id);
+    d.cards ||= {};
+    data.links = data.links.filter(l => ![l.a, l.b].some(r => r.startsWith(`${d.id}:${sid}/`)));
+    if (d.ports) for (const k of Object.keys(d.ports)) if (k.startsWith(sid + '/')) delete d.ports[k];
+    if (v) d.cards[sid] = v; else delete d.cards[sid];
+    commit(true);
+  };
+  bindIO();
+}
+function renderLink(el) {
+  const l = IDX.link.get(sel.id), A = IDX.port.get(l.a), B = IDX.port.get(l.b);
+  el.innerHTML = `<h2>Cabo</h2>
+    <div class="pid-row"><div class="pid">${esc(l.label || l.id)}</div><span class="pill ${esc(l.status || 'up')}">${STATUS[l.status || 'up']}</span></div>
+    <div class="sub">${esc(MEDIA[l.media] || 'Cabo')}</div>
+    <dl class="kv"><dt>Ponta A</dt><dd><button type="button" class="btn link" data-go="${esc(A.ref)}">${esc(portName(A))}</button></dd>
+      <dt>Ponta B</dt><dd><button type="button" class="btn link" data-go="${esc(B.ref)}">${esc(portName(B))}</button></dd>${kvRows(l.info)}</dl>
+    ${linkEditor(l)}${ioBlock()}`;
+  bindLinkEditor(l); bindIO();
+  el.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { sel = { kind: 'port', ref: b.dataset.go }; refresh(); });
+}
+function linkEditor(l) {
+  return `<h3>Editar cabo</h3>
+    <div class="row2"><div class="field"><label for="l-media">Tipo de cabo</label><select id="l-media">${mediaOptions(l.media)}</select></div>
+    <div class="field"><label for="l-st">Status</label><select id="l-st">${statusOptions(l.status || 'up')}</select></div></div>
+    <div class="field"><label for="l-label">Identificação</label><input id="l-label" value="${esc(l.label || '')}" placeholder="Ex.: Cordão 3 m · etiqueta F-012"></div>
+    <div class="btn-row"><button type="button" class="btn" id="l-del">Remover cabo</button></div>`;
+}
+function bindLinkEditor(l) {
+  $('#l-media').onchange = e => { l.media = e.target.value; commit(); };
+  $('#l-st').onchange = e => { l.status = e.target.value; commit(); };
+  $('#l-label').onchange = e => { l.label = e.target.value; commit(); };
+  const del = $('#l-del');
+  del.onclick = () => { if (del.dataset.armed) { data.links = data.links.filter(x => x !== l); if (sel.kind === 'link') sel = null; commit(true); } else { del.dataset.armed = 1; del.textContent = 'Clique de novo para remover'; } };
+}
+function renderPort(el) {
+  const p = IDX.port.get(sel.ref), l = IDX.linkOf.get(p.ref), st = statusOf(p.ref), d = p.info.d;
+  const ps = portState(p.ref) || {};
+  const o = l ? IDX.port.get(otherEnd(l, p.ref)) : null;
+  el.innerHTML = `<h2>Porta ${esc(ROLES[p.role] || '')}</h2>
+    <div class="pid-row"><div class="pid">${esc(p.label)}</div><span class="pill ${st}">${STATUS[st] || esc(st)}</span></div>
+    <div class="sub">${esc(d.name || d.id)} · ${esc(p.info.m.name || d.model)} · ${esc(p.type.toUpperCase())}${p.speed ? ' · ' + esc(p.speed) : ''}</div>
+    <dl class="kv"><dt>Conectada a</dt><dd>${o ? `<button type="button" class="btn link" data-go="${esc(o.ref)}">${esc(portName(o))}</button>` : '—'}</dd>
+      ${l ? `<dt>Cabo</dt><dd><button type="button" class="btn link" data-link-go="${esc(l.id)}">${esc(l.label || l.id)}</button> · ${esc(MEDIA[l.media] || 'Cabo')}</dd>` : ''}
+      ${kvRows(ps.metrics)}</dl>
+    <h3>Porta</h3>
+    <div class="row2"><div class="field"><label for="p-st">Status</label><select id="p-st">${statusOptions(ps.status || '', true)}</select></div>
+      <div class="field"><label for="p-ref">Referência</label><input id="p-ref" value="${esc(p.ref)}" readonly></div></div>
+    <div class="field"><label for="p-desc">Descrição</label><input id="p-desc" value="${esc(ps.desc || '')}" placeholder="Ex.: Bairro Centro · Cabo 03 FO 5"></div>
+    ${l ? linkEditor(l) : `<h3>Conectar</h3>
+      <div class="field"><label for="c-to">Ligar esta porta em</label><select id="c-to"><option value="">Escolha uma porta livre…</option>${freePortOptions(p.ref)}</select></div>
+      <div class="row2"><div class="field"><label for="c-media">Tipo de cabo</label><select id="c-media">${mediaOptions(guessMedia(p.type))}</select></div>
+      <div class="field"><label>&nbsp;</label><button type="button" class="btn" id="c-go">Conectar</button></div></div>`}
+    ${ioBlock()}`;
+  el.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { sel = { kind: 'port', ref: b.dataset.go }; refresh(); });
+  el.querySelectorAll('[data-link-go]').forEach(b => b.onclick = () => { sel = { kind: 'link', id: b.dataset.linkGo }; refresh(); });
+  const setPS = (k, v) => { d.ports ||= {}; d.ports[p.key] ||= {}; if (v === '' || v == null) delete d.ports[p.key][k]; else d.ports[p.key][k] = v; commit(); };
+  $('#p-st').onchange = e => setPS('status', e.target.value);
+  $('#p-desc').onchange = e => setPS('desc', e.target.value);
+  if (l) bindLinkEditor(l);
+  else $('#c-go').onclick = () => {
+    const to = $('#c-to').value; if (!to) return;
+    let n = data.links.length + 1; while (data.links.some(x => x.id === 'L' + n)) n++;
+    data.links.push({ id: 'L' + n, a: p.ref, b: to, media: $('#c-media').value, status: 'up' });
+    commit(true);
+  };
+  bindIO();
+}
+
+/* ---------- Tabela ---------- */
+function renderTable() {
+  const q = $('#q').value.trim().toLowerCase(), fd = $('#f-dev').value, fs = $('#f-st').value, fu = $('#f-use').value;
+  const rows = [...IDX.port.values()].filter(p => {
+    const st = statusOf(p.ref), l = IDX.linkOf.get(p.ref), ps = portState(p.ref) || {};
+    if (fd && p.info.id !== fd) return false;
+    if (fs && st !== fs) return false;
+    if (fu === 'linked' && !l) return false;
+    if (fu === 'unlinked' && l) return false;
+    if (q) { const o = l ? portName(IDX.port.get(otherEnd(l, p.ref))) : ''; if (!`${p.ref} ${p.label} ${p.info.d.name || ''} ${ps.desc || ''} ${o} ${p.type}`.toLowerCase().includes(q)) return false; }
+    return true;
+  });
+  const shown = rows.slice(0, 800);
+  $('#tbody').innerHTML = shown.map(p => {
+    const st = statusOf(p.ref), l = IDX.linkOf.get(p.ref), ps = portState(p.ref) || {};
+    const o = l ? IDX.port.get(otherEnd(l, p.ref)) : null;
+    const isSel = sel && sel.kind === 'port' && sel.ref === p.ref;
+    return `<tr data-row="${esc(p.ref)}"${isSel ? ' class="sel"' : ''}><td>${esc(p.info.d.name || p.info.id)}</td><td class="mono">${esc(p.label)}</td><td class="mono">${esc(p.type)}</td>
+      <td><span class="dot st-${st}"></span>${STATUS[st] || esc(st)}</td><td class="mono">${o ? esc(portName(o)) : '—'}</td><td>${esc(ps.desc || '') || '<span class="note">—</span>'}</td>
+      <td class="mono">${esc(Object.entries(ps.metrics || {}).slice(0, 3).map(([k, v]) => `${k}: ${v}`).join(' · '))}</td></tr>`;
+  }).join('') + (rows.length > shown.length ? `<tr><td colspan="7" class="note">Mostrando 800 de ${rows.length} portas. Use os filtros para refinar.</td></tr>` : '') ||
+    `<tr><td colspan="7" class="note">Nenhuma porta com esses filtros.</td></tr>`;
+}
+$('#tbody').addEventListener('click', e => { const tr = e.target.closest('[data-row]'); if (!tr) return; sel = { kind: 'port', ref: tr.dataset.row }; refresh(); stage.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' }); });
+['#q', '#f-dev', '#f-st', '#f-use'].forEach(s => $(s).addEventListener('input', renderTable));
+
+function refresh() { if (!V3.on) render(); renderHeader(); renderPanel(); renderTable(); showAngle(); if (V3.on) update3DSelection(); }
+function commit(reindex) { save(); if (reindex) buildIndex(); refresh(); if (V3.on) build3D(); }
+
+/* ---------- Face como SVG independente (texturas do 3D e imagens do draw.io) ---------- */
+let CSS_SA = null;
+const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function standaloneCSS() {
+  if (CSS_SA) return CSS_SA;
+  const all = [...document.querySelectorAll('style')].map(s => s.textContent).join('\n');
+  const i = all.indexOf('/* SVG */');
+  // variáveis usadas em estilos inline (ex.: cor do conector "var(--m-fiber-sm)") precisam existir dentro do SVG avulso
+  const names = [...new Set(all.match(/--[\w-]+(?=\s*:)/g) || [])];
+  CSS_SA = `:root{${names.map(n => `${n}:${cssVar(n)}`).join(';')}}\n` + (i >= 0 ? all.slice(i) : all)
+    .replace(/@media[^{]*\{[^{}]*\{[^}]*\}\s*\}/g, '')
+    .replace(/var\((--[\w-]+)\)/g, (m, n) => cssVar(n) || '#888888');
+  return CSS_SA;
+}
+const faceHasContent = (info, face) => !!(((info.m.faces || {})[face] || {}).items || []).length || info.slots.some(s => s.face === face) || info.ports.some(p => p.face === face);
+function faceSVG(info, face) {
+  const [fw, fh] = FACE_DIM[face](info.box), keep = sel;
+  sel = null;
+  const inner = faceContent(info, face);
+  sel = keep;
+  const defs = document.querySelector('#scene defs').outerHTML;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${fx(fw)}" height="${fx(fh)}" viewBox="0 0 ${fx(fw)} ${fx(fh)}"><style><![CDATA[${standaloneCSS()}]]></style>${defs}<rect width="${fx(fw)}" height="${fx(fh)}" class="face f-${info.body} ${SHADE[face]}"/>${inner}</svg>`;
+}
+function download(name, text, type) {
+  // dentro de um visualizador embutido (ex.: Artifact) o download é bloqueado; o painel orienta a copiar
+  try { if (window.self !== window.top) return false; } catch (e) { return false; }
+  try { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; document.body.appendChild(a); a.click(); a.remove(); return true; }
+  catch (e) { return false; }
+}
+
+/* ---------- Exportação draw.io ----------
+   Um bloco por rack: coluna "frente" e coluna "traseira" (faces como SVG vetorial), cada porta vira um
+   ponto conectável e cada cabo vira uma ligação ortogonal com a cor do tipo de cabo. */
+function exportDrawio() {
+  CSS_SA = null;
+  const X = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const b64 = s => btoa(unescape(encodeURIComponent(s)));
+  let n = 2; const nid = () => 'n' + (n++);
+  const out = [], portCell = new Map();
+  const groups = [...IDX.racks.values()].sort((a, b) => a.x - b.x || a.z - b.z)
+    .map(r => ({ title: r.name || r.id, devs: [...IDX.dev.values()].filter(i => i.d.rack === r.id) }));
+  const free = [...IDX.dev.values()].filter(i => !i.d.rack || !IDX.racks.has(i.d.rack));
+  if (free.length) groups.push({ title: 'Fora de rack', devs: free, free: true });
+  const text = (x, y, w, t) => out.push(`<mxCell id="${nid()}" value="${X(t)}" style="text;html=0;fontSize=16;fontStyle=1;align=left;verticalAlign=middle;" vertex="1" parent="1"><mxGeometry x="${fx(x)}" y="${fx(y)}" width="${fx(w)}" height="30" as="geometry"/></mxCell>`);
+  let gx = 0;
+  for (const g of groups) {
+    if (!g.devs.length) continue;
+    const W = Math.max(...g.devs.map(i => i.box.w)), top = Math.max(...g.devs.map(i => i.box.y + i.box.h));
+    const ypos = new Map(); let fy = 0;
+    g.devs.slice().sort((a, b) => (b.box.y + b.box.h) - (a.box.y + a.box.h)).forEach(i => {
+      if (g.free) { ypos.set(i.id, fy); fy += i.box.h + 60; } else ypos.set(i.id, top - (i.box.y + i.box.h));
+    });
+    for (const [face, cx] of [['front', gx], ['rear', gx + W + 260]]) {
+      text(cx, -50, W, `${g.title} · ${face === 'front' ? 'frente' : 'traseira'}`);
+      for (const i of g.devs) {
+        const [fw, fh] = FACE_DIM[face](i.box), x0 = cx + (W - fw) / 2, y0 = ypos.get(i.id);
+        out.push(`<mxCell id="${nid()}" value="${X(i.d.name || i.id)}" style="shape=image;imageAspect=0;image=data:image/svg+xml,${b64(faceSVG(i, face))};labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;spacingRight=8;fontSize=12;" vertex="1" parent="1"><mxGeometry x="${fx(x0)}" y="${fx(y0)}" width="${fx(fw)}" height="${fx(fh)}" as="geometry"/></mxCell>`);
+        i.ports.filter(p => p.face === face).forEach(p => {
+          const id = nid(), ps = portState(p.ref) || {};
+          portCell.set(p.ref, id);
+          out.push(`<UserObject id="${id}" label="" tooltip="${X(`${portName(p)} · ${p.type}${ps.desc ? ' · ' + ps.desc : ''}`)}" ref="${X(p.ref)}" status="${X(statusOf(p.ref))}"><mxCell style="rounded=0;fillColor=none;strokeColor=none;" vertex="1" parent="1"><mxGeometry x="${fx(x0 + p.x)}" y="${fx(y0 + p.y)}" width="${fx(p.w)}" height="${fx(p.h)}" as="geometry"/></mxCell></UserObject>`);
+        });
+      }
+    }
+    gx += 2 * W + 260 + 400;
+  }
+  IDX.link.forEach(l => {
+    const s = portCell.get(l.a), t = portCell.get(l.b);
+    if (!s || !t) return;
+    const media = MEDIA[l.media] ? l.media : 'generic', c = l.color || cssVar('--m-' + media);
+    out.push(`<UserObject id="${nid()}" label="" tooltip="${X(`${l.label || l.id} · ${MEDIA[media]} · ${portName(IDX.port.get(l.a))} ↔ ${portName(IDX.port.get(l.b))}`)}" cabo="${X(l.label || '')}" media="${X(MEDIA[media])}" status="${X(l.status || 'up')}" link="${X(l.id)}"><mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=0;endArrow=none;startArrow=none;strokeWidth=2;strokeColor=${c};fontSize=9;${l.status === 'down' ? 'dashed=1;' : ''}" edge="1" parent="1" source="${s}" target="${t}"><mxGeometry relative="1" as="geometry"/></mxCell></UserObject>`);
+  });
+  return `<mxfile host="iso3d" type="device"><diagram id="iso3d" name="${X(data.title || 'Mapa')}"><mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" page="0" math="0" shadow="0"><root><mxCell id="0"/><mxCell id="1" parent="0"/>${out.join('')}</root></mxGraphModel></diagram></mxfile>`;
+}
+
+/* ---------- Modo 3D (three.js) ----------
+   Cada equipamento vira uma caixa com as faces desenhadas (o mesmo SVG do modo Desenho, rasterizado
+   como textura) e cada cabo vira um tubo pelo mesmo trajeto. Mundo iso3d → three: (x, y, z) → (x, y, -z). */
+const THREE_URLS = ['https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js', 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js'];
+const BOX_FACES = ['right', 'left', 'top', 'bottom', 'front', 'rear'];
+const V3 = { on: false, built: 0, boxes: [], cables: [] };
+const glBox = $('#gl');
+const HINT_2D = 'Arraste para girar · botão direito ou Shift move · roda ou pinça dá zoom · setas giram';
+const HINT_3D = 'Arraste para orbitar · botão direito move · roda ou pinça dá zoom · clique seleciona';
+const loadScript = src => new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = () => rej(new Error('não foi possível carregar ' + src)); document.head.appendChild(s); });
+async function ensureThree() { if (!window.THREE) await loadScript(THREE_URLS[0]); if (!THREE.OrbitControls) await loadScript(THREE_URLS[1]); }
+const T3 = p => new THREE.Vector3(p[0], p[1], -p[2]);
+function rasterFace(info, face) {
+  return new Promise(res => {
+    const [fw, fh] = FACE_DIM[face](info.box), k = Math.min(6, 2048 / Math.max(fw, fh));
+    const img = new Image();
+    img.onload = () => { const c = document.createElement('canvas'); c.width = Math.max(2, Math.round(fw * k)); c.height = Math.max(2, Math.round(fh * k)); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); res(c); };
+    img.onerror = () => res(null);
+    img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(faceSVG(info, face));
+  });
+}
+function glMsg(t) { let m = glBox.querySelector('.gl-msg'); if (!t) { if (m) m.remove(); return; } if (!m) { m = document.createElement('div'); m.className = 'gl-msg'; glBox.appendChild(m); } m.textContent = t; }
+function init3D() {
+  const r = new THREE.WebGLRenderer({ antialias: true });
+  r.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+  glBox.prepend(r.domElement);
+  const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(32, 1, 10, 60000);
+  const controls = new THREE.OrbitControls(camera, r.domElement);
+  controls.enableDamping = true; controls.dampingFactor = 0.12; controls.screenSpacePanning = true;
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x3a4450, 0.95));
+  const d1 = new THREE.DirectionalLight(0xffffff, 0.55); d1.position.set(-1200, 2600, 3000); scene.add(d1);
+  const d2 = new THREE.DirectionalLight(0xffffff, 0.3); d2.position.set(2000, 1500, -2500); scene.add(d2);
+  const root = new THREE.Group(); scene.add(root);
+  Object.assign(V3, { r, scene, camera, controls, root });
+  const size = () => { const w = glBox.clientWidth, h = glBox.clientHeight; if (!w || !h) return; r.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); };
+  new ResizeObserver(size).observe(glBox); size();
+  const loop = () => { requestAnimationFrame(loop); if (!V3.on) return; controls.update(); r.render(scene, camera); };
+  loop();
+  let down = null;
+  r.domElement.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; tip.hidden = true; });
+  r.domElement.addEventListener('pointerup', e => { if (down && Math.hypot(e.clientX - down[0], e.clientY - down[1]) < 5) { sel = hit3D(e); refresh(); } down = null; });
+  r.domElement.addEventListener('pointermove', e => { if (e.buttons) return; placeTip(e, tipHTML(hit3D(e))); });
+  r.domElement.addEventListener('pointerleave', () => { tip.hidden = true; });
+}
+function disposeTree(o) { o.traverse(n => { if (n.geometry) n.geometry.dispose(); (Array.isArray(n.material) ? n.material : n.material ? [n.material] : []).forEach(m => { if (m.map) m.map.dispose(); m.dispose(); }); }); }
+function build3D() {
+  const token = ++V3.built, root = V3.root;
+  CSS_SA = null;
+  while (root.children.length) { const o = root.children.pop(); disposeTree(o); }
+  V3.marker = null; V3.boxes = []; V3.cables = [];
+  V3.scene.background = new THREE.Color(cssVar('--scene') || '#121920');
+  IDX.racks.forEach(rk => {
+    const p = new THREE.Mesh(new THREE.PlaneGeometry(rk.width + 40, rk.depth + 40), new THREE.MeshStandardMaterial({ color: cssVar('--floor') || '#1a222c', roughness: 1 }));
+    p.rotation.x = -Math.PI / 2; p.position.copy(T3([rk.x + rk.width / 2, -0.5, rk.z + rk.depth / 2])); root.add(p);
+  });
+  const tasks = [];
+  for (const it of IDX.boxes) {
+    const b = it.box, body = it.kind === 'post' ? 'post' : it.info.body;
+    const col = f => cssVar(`--${body}-${f === 'front' || f === 'rear' ? 'front' : f === 'top' ? 'top' : 'side'}`) || '#888888';
+    const mats = BOX_FACES.map(f => new THREE.MeshStandardMaterial({ color: col(f), roughness: 0.62, metalness: 0.12 }));
+    const mesh = new THREE.Mesh(new THREE.BoxGeometry(b.w, b.h, b.d), mats);
+    mesh.position.copy(T3([b.x + b.w / 2, b.y + b.h / 2, b.z + b.d / 2]));
+    mesh.userData = { info: it.info || null };
+    root.add(mesh);
+    if (!it.info) continue;
+    V3.boxes.push(mesh);
+    BOX_FACES.forEach((f, k) => {
+      if (f === 'bottom' || !faceHasContent(it.info, f)) return;
+      tasks.push(rasterFace(it.info, f).then(cv => {
+        if (!cv || token !== V3.built) return;
+        const tx = new THREE.CanvasTexture(cv); tx.anisotropy = V3.r.capabilities.getMaxAnisotropy();
+        mats[k].map = tx; mats[k].color.set('#ffffff'); mats[k].needsUpdate = true;
+      }));
+    });
+  }
+  buildCables3D();
+  update3DSelection();
+  return Promise.all(tasks);
+}
+function buildCables3D() {
+  V3.cables.forEach(m => { V3.root.remove(m); disposeTree(m); });
+  V3.cables = [];
+  if (cableMode === 'none') return;
+  [...IDX.link.values()].forEach((l, i) => {
+    const pts = route(l, i).map(T3), path = new THREE.CurvePath();
+    for (let k = 1; k < pts.length; k++) if (pts[k].distanceTo(pts[k - 1]) > 0.1) path.add(new THREE.LineCurve3(pts[k - 1], pts[k]));
+    if (!path.curves.length) return;
+    const media = MEDIA[l.media] ? l.media : 'generic';
+    const mat = new THREE.MeshStandardMaterial({ color: l.color || cssVar('--m-' + media) || '#cccccc', roughness: 0.45, transparent: true });
+    const segs = Math.min(600, Math.max(24, Math.round(path.getLength() / 6)));
+    const tube = new THREE.Mesh(new THREE.TubeGeometry(path, segs, 2.4, 6, false), mat);
+    tube.userData = { link: l };
+    V3.root.add(tube); V3.cables.push(tube);
+  });
+}
+function update3DSelection() {
+  if (!V3.root) return;
+  V3.cables.forEach(t => {
+    const l = t.userData.link, hot = linkFocused(l), st = l.status || 'up';
+    t.visible = !(cableMode === 'sel' && !hot);
+    t.material.opacity = hot ? 1 : sel ? 0.2 : 0.95;
+    t.material.emissive.set(hot ? '#3a3a3a' : st === 'down' ? '#5a0000' : st === 'alarm' ? '#402400' : '#000000');
+  });
+  if (V3.marker) { V3.root.remove(V3.marker); disposeTree(V3.marker); V3.marker = null; }
+  const lk = sel && sel.kind === 'link' ? IDX.link.get(sel.id) : null;
+  const refs = sel && sel.kind === 'port' ? [sel.ref, ...(IDX.linkOf.has(sel.ref) ? [otherEnd(IDX.linkOf.get(sel.ref), sel.ref)] : [])] : lk ? [lk.a, lk.b] : [];
+  const pos = [];
+  refs.forEach(ref => {
+    const p = IDX.port.get(ref); if (!p) return;
+    const b = p.info.box, nrm = NORMAL[p.face];
+    const c = [[p.x - 1.5, p.y - 1.5], [p.x + p.w + 1.5, p.y - 1.5], [p.x + p.w + 1.5, p.y + p.h + 1.5], [p.x - 1.5, p.y + p.h + 1.5]]
+      .map(([u, v]) => T3(add(FACE_PT[p.face](b, u, v), mul(nrm, 1))));
+    for (let k = 0; k < 4; k++) pos.push(c[k], c[(k + 1) % 4]);
+  });
+  if (pos.length) {
+    V3.marker = new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(pos), new THREE.LineBasicMaterial({ color: cssVar('--accent') || '#3fb6e6' }));
+    V3.root.add(V3.marker);
+  }
+  V3.boxes.forEach(m => { const on = sel && sel.kind === 'device' && m.userData.info.id === sel.id; m.material.forEach(mt => mt.emissive.set(on ? '#16384a' : '#000000')); });
+}
+function hit3D(e) {
+  if (!V3.r) return null;
+  const r = V3.r.domElement.getBoundingClientRect();
+  const ndc = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  const rc = new THREE.Raycaster(); rc.setFromCamera(ndc, V3.camera);
+  const hits = rc.intersectObjects([...V3.cables.filter(c => c.visible), ...V3.boxes], false);
+  if (!hits.length) return null;
+  const h = hits[0];
+  if (h.object.userData.link) return { kind: 'link', id: h.object.userData.link.id };
+  const info = h.object.userData.info, face = BOX_FACES[h.face.materialIndex];
+  if (!h.uv) return { kind: 'device', id: info.id };
+  const [fw, fh] = FACE_DIM[face](info.box), u = h.uv.x * fw, v = (1 - h.uv.y) * fh;
+  const p = info.ports.find(q => q.face === face && u >= q.x - 1 && u <= q.x + q.w + 1 && v >= q.y - 1 && v <= q.y + q.h + 2);
+  if (p) return { kind: 'port', ref: p.ref };
+  const s = info.slots.find(q => q.face === face && q.card && u >= q.sl.x && u <= q.sl.x + q.sl.w && v >= q.sl.y && v <= q.sl.y + q.sl.h);
+  return { kind: 'device', id: info.id, slot: s ? s.sl.id : null };
+}
+function camPose3D(yaw, pitch) {
+  const t = yaw * DEG, f = pitch * DEG, c = T3(IDX.center);
+  const dir = T3([-Math.sin(t) * Math.cos(f), -Math.sin(f), Math.cos(t) * Math.cos(f)]);
+  let rad = 200;
+  IDX.boxes.forEach(({ box: b }) => { rad = Math.max(rad, Math.hypot(b.x + b.w / 2 - IDX.center[0], b.y + b.h / 2 - IDX.center[1], b.z + b.d / 2 - IDX.center[2]) + Math.hypot(b.w, b.h, b.d) / 2); });
+  const cam3 = V3.camera, hv = cam3.fov * DEG / 2, hh = Math.atan(Math.tan(hv) * cam3.aspect);
+  const dist = rad / Math.sin(Math.min(hv, hh)) * 0.95;
+  return { pos: c.clone().sub(dir.multiplyScalar(dist)), target: c, dist };
+}
+function place3D(yaw, pitch) {
+  const p = camPose3D(yaw, pitch);
+  V3.camera.position.copy(p.pos); V3.controls.target.copy(p.target);
+  V3.camera.near = Math.max(1, p.dist / 200); V3.camera.far = p.dist * 30; V3.camera.updateProjectionMatrix(); V3.controls.update();
+}
+function tween3D(yaw, pitch) {
+  const p = camPose3D(yaw, pitch), p0 = V3.camera.position.clone(), t0g = V3.controls.target.clone(), s = performance.now();
+  if (reduce) return place3D(yaw, pitch);
+  V3.camera.near = Math.max(1, p.dist / 200); V3.camera.far = p.dist * 30; V3.camera.updateProjectionMatrix();
+  const step = now => {
+    const t = Math.min(1, (now - s) / 600), e = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    V3.camera.position.lerpVectors(p0, p.pos, e); V3.controls.target.lerpVectors(t0g, p.target, e);
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+function dolly3D(k) { const c = V3.controls, v = V3.camera.position.clone().sub(c.target).multiplyScalar(k); V3.camera.position.copy(c.target.clone().add(v)); }
+let modeNow = 'svg';
+async function setMode(m) {
+  modeNow = m;
+  document.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed', b.dataset.mode === m));
+  $('#drag-seg').hidden = m === '3d';
+  tip.hidden = true;
+  if (m !== '3d') { V3.on = false; glBox.hidden = true; svg.hidden = false; $('#hint-text').textContent = HINT_2D; render(); fit(); return true; }
+  svg.hidden = true; glBox.hidden = false; $('#hint-text').textContent = HINT_3D;
+  glMsg('Carregando 3D…');
+  try { await ensureThree(); if (!V3.r) init3D(); }
+  catch (e) { glMsg('Não foi possível abrir o 3D: ' + (e.message || 'WebGL indisponível')); return false; }
+  if (modeNow !== '3d') return false;
+  V3.on = true;
+  const ready = build3D();
+  place3D(cam.yaw, cam.pitch);
+  refresh();
+  glMsg('Desenhando as faces…');
+  await ready;
+  glMsg('');
+  return true;
+}
+document.querySelectorAll('[data-mode]').forEach(b => b.onclick = () => setMode(b.dataset.mode));
+
+/* ---------- API para dados ao vivo ----------
+   IsoDash.update({ ports: { "olt1:1/0": { status: "alarm", metrics: { "Rx": "-27.8 dBm" } } }, links: { "L3": { status: "down" } }, devices: { "olt1": { status: "alarm" } } })
+   Mescla o estado, redesenha e não salva no navegador (dados ao vivo vêm sempre da fonte). */
+window.IsoDash = {
+  get data() { return data; },
+  update(patch = {}) {
+    for (const [ref, v] of Object.entries(patch.ports || {})) {
+      const p = IDX.port.get(ref); if (!p) continue;
+      const d = p.info.d; d.ports ||= {}; const cur = d.ports[p.key] ||= {};
+      if (v.metrics) cur.metrics = { ...(cur.metrics || {}), ...v.metrics };
+      for (const k of Object.keys(v)) if (k !== 'metrics') cur[k] = v[k];
+    }
+    for (const [id, v] of Object.entries(patch.links || {})) { const l = IDX.link.get(id); if (l) Object.assign(l, v); }
+    for (const [id, v] of Object.entries(patch.devices || {})) { const i = IDX.dev.get(id); if (i) Object.assign(i.d, v); }
+    refresh();
+  },
+  select(ref) { sel = ref.includes(':') ? { kind: 'port', ref } : IDX.link.has(ref) ? { kind: 'link', id: ref } : { kind: 'device', id: ref }; refresh(); },
+  setView, fit, issues: () => ISSUES.slice(),
+  // Modo de visualização: 'svg' (desenho isométrico) ou '3d' (three.js). Retorna uma Promise<boolean>.
+  mode: setMode,
+  // Retorna o XML de um arquivo .drawio (frente e traseira por rack, portas conectáveis, cabos).
+  exportDrawio,
+  // Enquadra um equipamento ("olt1") ou uma porta ("olt1:1/0") e seleciona. margin = folga relativa (padrão 0.25).
+  focus(ref, margin = 0.25) {
+    const isPort = ref.includes(':');
+    sel = isPort ? { kind: 'port', ref } : { kind: 'device', id: ref };
+    refresh();
+    const el = world.querySelector(isPort ? `[data-ref="${CSS.escape(ref)}"]` : `[data-dev="${CSS.escape(ref)}"]`);
+    if (!el) return false;
+    const r = el.getBoundingClientRect(), [x0, y0] = toWorld(r.left, r.top), [x1, y1] = toWorld(r.right, r.bottom);
+    const k = svg.clientWidth / Math.max(1, svg.clientHeight);
+    let w = Math.max(x1 - x0, isPort ? 60 : 120) * (1 + 2 * margin), h = Math.max(y1 - y0, isPort ? 40 : 60) * (1 + 2 * margin);
+    if (w / h > k) h = w / k; else w = h * k;
+    vb = { x: (x0 + x1) / 2 - w / 2, y: (y0 + y1) / 2 - h / 2, w, h }; applyVB();
+    return true;
+  },
+};
+
+/* ---------- Início ---------- */
+if (fatal) { stage.insertAdjacentHTML('beforeend', `<div class="fatal">${esc(fatal)}</div>`); data = { models: {}, racks: [], devices: [], links: [] }; }
+buildIndex();
+refresh();
+requestAnimationFrame(fit);
+if (document.fonts) document.fonts.ready.then(() => { if (!V3.on) render(); });
+if (location.hash === '#3d' || data.mode === '3d') setMode('3d');
+})();
+</script>
+<!-- ISO3D-ENGINE:END -->

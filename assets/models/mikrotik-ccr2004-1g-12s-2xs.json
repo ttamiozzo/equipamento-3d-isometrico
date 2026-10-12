@@ -1,0 +1,60 @@
+{
+  "id": "mikrotik-ccr2004-1g-12s-2xs",
+  "vendor": "MikroTik",
+  "name": "CCR2004-1G-12S+2XS",
+  "category": "router",
+  "size": { "w": 443, "h": 44, "d": 224 },
+  "rackUnits": 1,
+  "body": "white",
+  "faces": {
+    "front": { "items": [
+      { "type": "logo", "x": 10, "y": 19, "text": "MikroTik", "size": 6.5 },
+      { "type": "label", "x": 10, "y": 30, "text": "CCR2004-1G-12S+2XS", "size": 3 },
+      { "type": "led", "x": 78, "y": 12, "color": "ok" }, { "type": "label", "x": 81, "y": 13.1, "text": "PWR1", "size": 2.2 },
+      { "type": "led", "x": 78, "y": 19, "color": "ok" }, { "type": "label", "x": 81, "y": 20.1, "text": "PWR2", "size": 2.2 },
+      { "type": "led", "x": 78, "y": 26, "color": "ok" }, { "type": "label", "x": 81, "y": 27.1, "text": "USR", "size": 2.2 },
+      { "type": "screw", "x": 98, "y": 34, "r": 1.2 }, { "type": "label", "x": 98, "y": 40, "text": "RESET", "size": 2, "anchor": "middle" },
+      { "type": "label", "x": 105.8, "y": 13.5, "text": "SERIAL", "size": 2, "anchor": "middle" },
+      { "type": "label", "x": 123.8, "y": 13.5, "text": "ETH1", "size": 2, "anchor": "middle" },
+      { "type": "label", "x": 199, "y": 41.5, "text": "SFP+ 1-12 (10G)", "size": 2.2, "anchor": "middle" },
+      { "type": "label", "x": 285, "y": 41.5, "text": "SFP28 (25G)", "size": 2.2, "anchor": "middle" }
+    ] },
+    "rear": { "items": [
+      { "type": "grille", "x": 110, "y": 6, "w": 70, "h": 32 },
+      { "type": "grille", "x": 200, "y": 6, "w": 70, "h": 32 },
+      { "type": "grille", "x": 290, "y": 6, "w": 70, "h": 32 },
+      { "type": "screw", "x": 425, "y": 22, "r": 2.5 }, { "type": "label", "x": 425, "y": 32, "text": "GND", "size": 2, "anchor": "middle" }
+    ] },
+    "left":  { "items": [ { "type": "slits", "x": 20, "y": 10, "w": 80, "h": 24 } ] },
+    "right": { "items": [ { "type": "slits", "x": 124, "y": 10, "w": 80, "h": 24 } ] }
+  },
+  "ports": [
+    {"id":"console","type":"console","x":100,"y":17,"role":"console","label":"Serial"},
+    {"id":"ether1","type":"rj45","x":118,"y":17,"role":"mgmt","speed":"1GE"},
+
+    {"id":"sfp-sfpplus1","type":"sfp+","x":150,"y":7,"role":"uplink","speed":"10GE"},
+    {"id":"sfp-sfpplus2","type":"sfp+","x":150,"y":25,"role":"uplink","speed":"10GE"},
+    {"id":"sfp-sfpplus3","type":"sfp+","x":166,"y":7,"role":"uplink","speed":"10GE"},
+    {"id":"sfp-sfpplus4","type":"sfp+","x":166,"y":25,"role":"uplink","speed":"10GE"},
+    {"id":"sfp-sfpplus5","type":"sfp+","x":182,"y":7,"role":"uplink","speed":"10GE"},
+    {"id":"sfp-sfpplus6","type":"sfp+","x":182,"y":25,"role":"uplink","speed":"10GE"},
+    {"id":"sfp-sfpplus7","type":"sfp+","x":202,"y":7,"role":"uplink","speed":"10GE"},
+    {"id":"sfp-sfpplus8","type":"sfp+","x":202,"y":25,"role":"uplink","speed":"10GE"},
+    {"id":"sfp-sfpplus9","type":"sfp+","x":218,"y":7,"role":"uplink","speed":"10GE"},
+    {"id":"sfp-sfpplus10","type":"sfp+","x":218,"y":25,"role":"uplink","speed":"10GE"},
+    {"id":"sfp-sfpplus11","type":"sfp+","x":234,"y":7,"role":"uplink","speed":"10GE"},
+    {"id":"sfp-sfpplus12","type":"sfp+","x":234,"y":25,"role":"uplink","speed":"10GE"},
+
+    {"id":"sfp28-1","type":"sfp28","x":278,"y":7,"role":"uplink","speed":"25GE"},
+    {"id":"sfp28-2","type":"sfp28","x":278,"y":25,"role":"uplink","speed":"25GE"},
+
+    {"id":"psu1","type":"power-ac","face":"rear","x":20,"y":14,"role":"power","showLabel":false},
+    {"id":"psu2","type":"power-ac","face":"rear","x":60,"y":14,"role":"power","showLabel":false}
+  ],
+  "source": {
+    "basis": ["datasheet", "estimate"],
+    "refs": ["https://mikrotik.com/product/ccr2004_1g_12s_2xs"],
+    "confidence": "média",
+    "notes": "Sem pesquisa web nesta sessão; dados do conhecimento prévio do datasheet MikroTik. Dimensões 443 x 224 x 44 mm (1U) e portas (1x GbE ether1, 12x SFP+ sfp-sfpplus1..12, 2x SFP28 sfp28-1..2, console serial RJ45, 2 fontes AC IEC C14 na traseira) com confiança média-alta. Disposição física estimada: console e ether1 à esquerda, SFP+ em 2 fileiras de 6 (ímpar em cima, em dois blocos de 3 colunas), SFP28 empilhadas à direita; posição de LEDs, reset e ventiladores traseiros estilizada. Ids iguais à RouterOS (/interface print)."
+  }
+}

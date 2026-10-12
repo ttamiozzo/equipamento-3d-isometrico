@@ -1,0 +1,48 @@
+{
+  "id": "servidor-2u",
+  "vendor": "Genérico",
+  "name": "Servidor 2U 8 baias",
+  "category": "server",
+  "size": { "w": 440, "h": 88.9, "d": 700 },
+  "rackUnits": 2,
+  "body": "black",
+  "faces": {
+    "front": { "items": [
+      {"type":"rect","x":24,"y":10,"w":40,"h":30,"r":1,"fill":"#1c2127","stroke":"#46505a"},
+      {"type":"led","x":60,"y":14,"color":"ok","r":0.8},
+      {"type":"rect","x":68,"y":10,"w":40,"h":30,"r":1,"fill":"#1c2127","stroke":"#46505a"},
+      {"type":"led","x":104,"y":14,"color":"ok","r":0.8},
+      {"type":"rect","x":112,"y":10,"w":40,"h":30,"r":1,"fill":"#1c2127","stroke":"#46505a"},
+      {"type":"led","x":148,"y":14,"color":"ok","r":0.8},
+      {"type":"rect","x":156,"y":10,"w":40,"h":30,"r":1,"fill":"#1c2127","stroke":"#46505a"},
+      {"type":"led","x":192,"y":14,"color":"ok","r":0.8},
+      {"type":"rect","x":200,"y":10,"w":40,"h":30,"r":1,"fill":"#1c2127","stroke":"#46505a"},
+      {"type":"led","x":236,"y":14,"color":"ok","r":0.8},
+      {"type":"rect","x":244,"y":10,"w":40,"h":30,"r":1,"fill":"#1c2127","stroke":"#46505a"},
+      {"type":"led","x":280,"y":14,"color":"ok","r":0.8},
+      {"type":"rect","x":288,"y":10,"w":40,"h":30,"r":1,"fill":"#1c2127","stroke":"#46505a"},
+      {"type":"led","x":324,"y":14,"color":"ok","r":0.8},
+      {"type":"rect","x":332,"y":10,"w":40,"h":30,"r":1,"fill":"#1c2127","stroke":"#46505a"},
+      {"type":"led","x":368,"y":14,"color":"ok","r":0.8},
+      { "type": "hex", "x": 24, "y": 48, "w": 340, "h": 32 },
+      { "type": "logo", "x": 376, "y": 22, "text": "SRV", "size": 9 },
+      { "type": "led", "x": 380, "y": 34, "color": "ok", "r": 1.4 }
+    ] },
+    "rear": { "items": [
+      { "type": "rect", "x": 10, "y": 6, "w": 60, "h": 76, "r": 1, "fill": "#262b31", "stroke": "#46505a" },
+      { "type": "grille", "x": 90, "y": 10, "w": 150, "h": 70 },
+      { "type": "label", "x": 260, "y": 54, "text": "BMC", "size": 3 }
+    ] }
+  },
+  "ports": [
+    {"id":"usb0","type":"usb","x":400,"y":60,"role":"generic","showLabel":false},
+    {"id":"psu1","type":"power-ac","face":"rear","x":28,"y":12,"role":"power","showLabel":false},
+    {"id":"psu2","type":"power-ac","face":"rear","x":28,"y":56,"role":"power","showLabel":false},
+    {"id":"bmc","type":"rj45","face":"rear","x":262,"y":60,"role":"mgmt","speed":"1GE"},
+    {"id":"eno1","type":"rj45","face":"rear","x":290,"y":60,"role":"lan","speed":"1GE"},
+    {"id":"eno2","type":"rj45","face":"rear","x":305,"y":60,"role":"lan","speed":"1GE"},
+    {"id":"ens1f0","type":"sfp+","face":"rear","x":330,"y":60,"role":"uplink","speed":"10GE"},
+    {"id":"ens1f1","type":"sfp+","face":"rear","x":348,"y":60,"role":"uplink","speed":"10GE"}
+  ],
+  "source": { "basis": ["estimate"], "confidence": "baixa", "notes": "Servidor 2U genérico, portas de rede na traseira." }
+}

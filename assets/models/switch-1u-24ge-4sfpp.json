@@ -1,0 +1,50 @@
+{
+  "id": "switch-1u-24ge-4sfpp",
+  "vendor": "Genérico",
+  "name": "Switch 1U 24xGE 4xSFP+",
+  "category": "switch",
+  "size": { "w": 440, "h": 44.45, "d": 250 },
+  "rackUnits": 1,
+  "body": "dark",
+  "faces": {
+    "front": { "items": [
+      { "type": "logo", "x": 10, "y": 20, "text": "SWITCH", "size": 7 },
+      { "type": "label", "x": 10, "y": 31, "text": "24G + 4x10G", "size": 3 },
+      { "type": "led", "x": 52, "y": 14, "color": "ok" }, { "type": "led", "x": 52, "y": 22, "color": "ok" }
+    ] },
+    "rear": { "items": [ { "type": "grille", "x": 120, "y": 6, "w": 200, "h": 32 } ] }
+  },
+  "ports": [
+    {"id":"1","type":"rj45","x":70,"y":7,"role":"access","speed":"1GE"},
+    {"id":"2","type":"rj45","x":70,"y":25,"role":"access","speed":"1GE"},
+    {"id":"3","type":"rj45","x":84,"y":7,"role":"access","speed":"1GE"},
+    {"id":"4","type":"rj45","x":84,"y":25,"role":"access","speed":"1GE"},
+    {"id":"5","type":"rj45","x":98,"y":7,"role":"access","speed":"1GE"},
+    {"id":"6","type":"rj45","x":98,"y":25,"role":"access","speed":"1GE"},
+    {"id":"7","type":"rj45","x":112,"y":7,"role":"access","speed":"1GE"},
+    {"id":"8","type":"rj45","x":112,"y":25,"role":"access","speed":"1GE"},
+    {"id":"9","type":"rj45","x":126,"y":7,"role":"access","speed":"1GE"},
+    {"id":"10","type":"rj45","x":126,"y":25,"role":"access","speed":"1GE"},
+    {"id":"11","type":"rj45","x":140,"y":7,"role":"access","speed":"1GE"},
+    {"id":"12","type":"rj45","x":140,"y":25,"role":"access","speed":"1GE"},
+    {"id":"13","type":"rj45","x":160,"y":7,"role":"access","speed":"1GE"},
+    {"id":"14","type":"rj45","x":160,"y":25,"role":"access","speed":"1GE"},
+    {"id":"15","type":"rj45","x":174,"y":7,"role":"access","speed":"1GE"},
+    {"id":"16","type":"rj45","x":174,"y":25,"role":"access","speed":"1GE"},
+    {"id":"17","type":"rj45","x":188,"y":7,"role":"access","speed":"1GE"},
+    {"id":"18","type":"rj45","x":188,"y":25,"role":"access","speed":"1GE"},
+    {"id":"19","type":"rj45","x":202,"y":7,"role":"access","speed":"1GE"},
+    {"id":"20","type":"rj45","x":202,"y":25,"role":"access","speed":"1GE"},
+    {"id":"21","type":"rj45","x":216,"y":7,"role":"access","speed":"1GE"},
+    {"id":"22","type":"rj45","x":216,"y":25,"role":"access","speed":"1GE"},
+    {"id":"23","type":"rj45","x":230,"y":7,"role":"access","speed":"1GE"},
+    {"id":"24","type":"rj45","x":230,"y":25,"role":"access","speed":"1GE"},
+    {"id":"25","type":"sfp+","x":270,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"26","type":"sfp+","x":287,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"27","type":"sfp+","x":304,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"28","type":"sfp+","x":321,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"con","type":"console","x":400,"y":17,"role":"console"},
+    {"id":"psu","type":"power-ac","face":"rear","x":30,"y":14,"role":"power","showLabel":false}
+  ],
+  "source": { "basis": ["estimate"], "confidence": "baixa", "notes": "Switch 1U genérico. Portas ímpares em cima, pares embaixo." }
+}

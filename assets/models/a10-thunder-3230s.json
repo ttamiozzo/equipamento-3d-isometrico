@@ -1,0 +1,622 @@
+{
+    "id":  "a10-thunder-3230s",
+    "vendor":  "A10 Networks",
+    "name":  "Thunder 3230S (TH3230S)",
+    "category":  "cgnat",
+    "size":  {
+                 "w":  438,
+                 "h":  44,
+                 "d":  560
+             },
+    "rackUnits":  1,
+    "body":  "light",
+    "faces":  {
+                  "front":  {
+                                "items":  [
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  29,
+                                                  "y":  7,
+                                                  "w":  61,
+                                                  "h":  15,
+                                                  "r":  3,
+                                                  "fill":  "#24282d"
+                                              },
+                                              {
+                                                  "type":  "logo",
+                                                  "x":  32,
+                                                  "y":  18.5,
+                                                  "text":  "A10",
+                                                  "size":  7,
+                                                  "color":  "#ffffff"
+                                              },
+                                              {
+                                                  "type":  "logo",
+                                                  "x":  50,
+                                                  "y":  14.5,
+                                                  "text":  "Thunder",
+                                                  "size":  5.2,
+                                                  "color":  "#ffffff"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  72,
+                                                  "y":  20,
+                                                  "text":  "3230",
+                                                  "size":  2.8,
+                                                  "color":  "#d8dde2"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  22,
+                                                  "y":  29,
+                                                  "text":  "PWR",
+                                                  "size":  2.2,
+                                                  "anchor":  "end"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  25.8,
+                                                  "y":  28.2,
+                                                  "r":  0.9,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  22,
+                                                  "y":  34.3,
+                                                  "text":  "Status",
+                                                  "size":  2.2,
+                                                  "anchor":  "end"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  25.8,
+                                                  "y":  33.5,
+                                                  "r":  0.9,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  22,
+                                                  "y":  39.1,
+                                                  "text":  "Disk",
+                                                  "size":  2.2,
+                                                  "anchor":  "end"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  25.8,
+                                                  "y":  38.3,
+                                                  "r":  0.9
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  40,
+                                                  "y":  31.5,
+                                                  "text":  "USB",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  56,
+                                                  "y":  22.5,
+                                                  "text":  "MGMT",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  80,
+                                                  "y":  22.5,
+                                                  "text":  "Console",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  103,
+                                                  "y":  22.5,
+                                                  "text":  "LOM",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "perf",
+                                                  "x":  99,
+                                                  "y":  3,
+                                                  "w":  336,
+                                                  "h":  15
+                                              },
+                                              {
+                                                  "type":  "perf",
+                                                  "x":  116,
+                                                  "y":  18,
+                                                  "w":  48,
+                                                  "h":  24
+                                              },
+                                              {
+                                                  "type":  "perf",
+                                                  "x":  232,
+                                                  "y":  18,
+                                                  "w":  88,
+                                                  "h":  24
+                                              },
+                                              {
+                                                  "type":  "perf",
+                                                  "x":  388,
+                                                  "y":  18,
+                                                  "w":  47,
+                                                  "h":  24
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  174,
+                                                  "y":  22.5,
+                                                  "text":  "1",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  189,
+                                                  "y":  22.5,
+                                                  "text":  "2",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  206.5,
+                                                  "y":  22.5,
+                                                  "text":  "3",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  221,
+                                                  "y":  22.5,
+                                                  "text":  "4",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  197,
+                                                  "y":  43.3,
+                                                  "text":  "1G",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  331,
+                                                  "y":  22.5,
+                                                  "text":  "5",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  345.5,
+                                                  "y":  22.5,
+                                                  "text":  "6",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  362,
+                                                  "y":  22.5,
+                                                  "text":  "7",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  377,
+                                                  "y":  22.5,
+                                                  "text":  "8",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  354,
+                                                  "y":  43.3,
+                                                  "text":  "10G",
+                                                  "size":  2.2,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  171,
+                                                  "y":  28.6,
+                                                  "r":  0.6,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  177,
+                                                  "y":  28.6,
+                                                  "r":  0.6
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  186,
+                                                  "y":  28.6,
+                                                  "r":  0.6,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  192,
+                                                  "y":  28.6,
+                                                  "r":  0.6
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  203.5,
+                                                  "y":  28.6,
+                                                  "r":  0.6
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  209.5,
+                                                  "y":  28.6,
+                                                  "r":  0.6
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  218,
+                                                  "y":  28.6,
+                                                  "r":  0.6
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  224,
+                                                  "y":  28.6,
+                                                  "r":  0.6
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  328,
+                                                  "y":  28.6,
+                                                  "r":  0.6,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  334,
+                                                  "y":  28.6,
+                                                  "r":  0.6,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  342.5,
+                                                  "y":  28.6,
+                                                  "r":  0.6,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  348.5,
+                                                  "y":  28.6,
+                                                  "r":  0.6,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  359,
+                                                  "y":  28.6,
+                                                  "r":  0.6
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  365,
+                                                  "y":  28.6,
+                                                  "r":  0.6
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  374,
+                                                  "y":  28.6,
+                                                  "r":  0.6
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  380,
+                                                  "y":  28.6,
+                                                  "r":  0.6
+                                              }
+                                          ]
+                            },
+                  "top":  {
+                              "items":  [
+                                            {
+                                                "type":  "rect",
+                                                "x":  0,
+                                                "y":  0,
+                                                "w":  438,
+                                                "h":  560,
+                                                "fill":  "#2a2d31"
+                                            },
+                                            {
+                                                "type":  "screw",
+                                                "x":  73,
+                                                "y":  554,
+                                                "r":  1.6
+                                            },
+                                            {
+                                                "type":  "screw",
+                                                "x":  221,
+                                                "y":  554,
+                                                "r":  1.6
+                                            },
+                                            {
+                                                "type":  "screw",
+                                                "x":  368,
+                                                "y":  554,
+                                                "r":  1.6
+                                            }
+                                        ]
+                          },
+                  "left":  {
+                               "items":  [
+                                             {
+                                                 "type":  "rect",
+                                                 "x":  0,
+                                                 "y":  0,
+                                                 "w":  560,
+                                                 "h":  44,
+                                                 "fill":  "#24272b"
+                                             }
+                                         ]
+                           },
+                  "right":  {
+                                "items":  [
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  0,
+                                                  "y":  0,
+                                                  "w":  560,
+                                                  "h":  44,
+                                                  "fill":  "#24272b"
+                                              }
+                                          ]
+                            },
+                  "rear":  {
+                               "items":  [
+                                             {
+                                                 "type":  "rect",
+                                                 "x":  0,
+                                                 "y":  0,
+                                                 "w":  438,
+                                                 "h":  44,
+                                                 "fill":  "#2d3035"
+                                             },
+                                             {
+                                                 "type":  "rect",
+                                                 "x":  6,
+                                                 "y":  4,
+                                                 "w":  80,
+                                                 "h":  36,
+                                                 "r":  1,
+                                                 "fill":  "#1d2024",
+                                                 "stroke":  "#46505a"
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  10,
+                                                 "y":  10,
+                                                 "text":  "PSU1",
+                                                 "size":  2.4
+                                             },
+                                             {
+                                                 "type":  "handle",
+                                                 "x":  70,
+                                                 "y":  8,
+                                                 "w":  10,
+                                                 "h":  28
+                                             },
+                                             {
+                                                 "type":  "grille",
+                                                 "x":  100,
+                                                 "y":  6,
+                                                 "w":  238,
+                                                 "h":  32
+                                             },
+                                             {
+                                                 "type":  "rect",
+                                                 "x":  352,
+                                                 "y":  4,
+                                                 "w":  80,
+                                                 "h":  36,
+                                                 "r":  1,
+                                                 "fill":  "#1d2024",
+                                                 "stroke":  "#46505a"
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  356,
+                                                 "y":  10,
+                                                 "text":  "PSU2",
+                                                 "size":  2.4
+                                             },
+                                             {
+                                                 "type":  "handle",
+                                                 "x":  416,
+                                                 "y":  8,
+                                                 "w":  10,
+                                                 "h":  28
+                                             }
+                                         ]
+                           }
+              },
+    "ports":  [
+                  {
+                      "id":  "usb",
+                      "type":  "usb",
+                      "x":  33,
+                      "y":  33.5,
+                      "w":  13.5,
+                      "h":  4.6,
+                      "role":  "generic",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "mgmt",
+                      "type":  "rj45",
+                      "x":  50,
+                      "y":  24.5,
+                      "w":  12.5,
+                      "h":  11,
+                      "role":  "mgmt",
+                      "speed":  "1GE",
+                      "label":  "MGMT",
+                      "short":  "M"
+                  },
+                  {
+                      "id":  "console",
+                      "type":  "console",
+                      "x":  74,
+                      "y":  24.5,
+                      "w":  12.5,
+                      "h":  11,
+                      "role":  "console",
+                      "label":  "Console",
+                      "short":  "C"
+                  },
+                  {
+                      "id":  "lom",
+                      "type":  "rj45",
+                      "x":  97,
+                      "y":  24.5,
+                      "w":  12.5,
+                      "h":  11,
+                      "role":  "mgmt",
+                      "speed":  "1GE",
+                      "label":  "LOM",
+                      "short":  "L"
+                  },
+                  {
+                      "id":  "eth1",
+                      "type":  "sfp",
+                      "x":  167.3,
+                      "y":  31,
+                      "w":  14,
+                      "h":  9.4,
+                      "role":  "lan",
+                      "speed":  "1GE"
+                  },
+                  {
+                      "id":  "eth2",
+                      "type":  "sfp",
+                      "x":  182,
+                      "y":  31,
+                      "w":  14,
+                      "h":  9.4,
+                      "role":  "lan",
+                      "speed":  "1GE"
+                  },
+                  {
+                      "id":  "eth3",
+                      "type":  "sfp",
+                      "x":  199.5,
+                      "y":  31,
+                      "w":  14,
+                      "h":  9.4,
+                      "role":  "lan",
+                      "speed":  "1GE"
+                  },
+                  {
+                      "id":  "eth4",
+                      "type":  "sfp",
+                      "x":  214.2,
+                      "y":  31,
+                      "w":  14,
+                      "h":  9.4,
+                      "role":  "lan",
+                      "speed":  "1GE"
+                  },
+                  {
+                      "id":  "eth5",
+                      "type":  "sfp+",
+                      "x":  324,
+                      "y":  31,
+                      "w":  14,
+                      "h":  9.4,
+                      "role":  "uplink",
+                      "speed":  "10GE"
+                  },
+                  {
+                      "id":  "eth6",
+                      "type":  "sfp+",
+                      "x":  338.6,
+                      "y":  31,
+                      "w":  14,
+                      "h":  9.4,
+                      "role":  "uplink",
+                      "speed":  "10GE"
+                  },
+                  {
+                      "id":  "eth7",
+                      "type":  "sfp+",
+                      "x":  355,
+                      "y":  31,
+                      "w":  14,
+                      "h":  9.4,
+                      "role":  "uplink",
+                      "speed":  "10GE"
+                  },
+                  {
+                      "id":  "eth8",
+                      "type":  "sfp+",
+                      "x":  369.7,
+                      "y":  31,
+                      "w":  14,
+                      "h":  9.4,
+                      "role":  "uplink",
+                      "speed":  "10GE"
+                  },
+                  {
+                      "id":  "psu1",
+                      "type":  "power-ac",
+                      "face":  "rear",
+                      "x":  30,
+                      "y":  14,
+                      "role":  "power",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "psu2",
+                      "type":  "power-ac",
+                      "face":  "rear",
+                      "x":  376,
+                      "y":  14,
+                      "role":  "power",
+                      "showLabel":  false
+                  }
+              ],
+    "source":  {
+                   "basis":  [
+                                 "photo",
+                                 "description",
+                                 "estimate"
+                             ],
+                   "refs":  [
+                                "https://netboxlabs.com/ndx/a10/a10-thunder-3230/",
+                                "https://www.cdw.com/product/a10-network-thunder-3230s-application-delivery-controller-cgn-1u-cpu/5098216"
+                            ],
+                   "confidence":  "média",
+                   "notes":  "Frente medida em foto do produto (escala ~0,37 mm/px pela largura de 438 mm): painel prateado com selo A10 Thunder 3230, LEDs PWR/Status/Disk, USB, MGMT, Console e LOM (RJ45), 4 SFP 1G (portas 1-4) e 4 SFP+ 10G (5-8) em fileira única com LEDs LNK/ACT, grade perfurada no restante; topo e laterais pretos. Lista de portas confere com o catálogo NetBox da família 3230. Estimados: profundidade (560 mm, \u0027full depth\u0027) e traseira (2 fontes hot-swap nas pontas, ventilação no meio — sem foto). Ids eth1..eth8 seguem o NetBox; no ACOS aparecem como \u0027ethernet 1\u0027..\u0027ethernet 8\u0027.",
+                   "questions":  [
+                                     "Traseira sem foto: fontes nas pontas e ventilação no meio são estimadas.",
+                                     "Profundidade estimada em 560 mm (ficha diz só \u0027full depth\u0027).",
+                                     "Confirmar nomes das interfaces no ACOS (show interfaces brief)."
+                                 ]
+               }
+}

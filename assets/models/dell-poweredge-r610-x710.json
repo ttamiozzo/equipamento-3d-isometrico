@@ -1,0 +1,764 @@
+{
+    "id":  "dell-poweredge-r610-x710",
+    "vendor":  "Dell",
+    "name":  "PowerEdge R610 + Intel X710-DA4",
+    "category":  "server",
+    "size":  {
+                 "w":  434,
+                 "h":  42.6,
+                 "d":  627
+             },
+    "rackUnits":  1,
+    "body":  "black",
+    "faces":  {
+                  "front":  {
+                                "items":  [
+                                              {
+                                                  "type":  "screw",
+                                                  "x":  11,
+                                                  "y":  11,
+                                                  "r":  3.2
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  11,
+                                                  "y":  11,
+                                                  "r":  1.2,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  11,
+                                                  "y":  19,
+                                                  "text":  "PWR",
+                                                  "size":  1.8,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "screw",
+                                                  "x":  11,
+                                                  "y":  27,
+                                                  "r":  0.8
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  11,
+                                                  "y":  32,
+                                                  "text":  "NMI",
+                                                  "size":  1.8,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "display",
+                                                  "x":  44,
+                                                  "y":  7,
+                                                  "w":  38,
+                                                  "h":  10,
+                                                  "text":  "R610 OK",
+                                                  "size":  3.6
+                                              },
+                                              {
+                                                  "type":  "screw",
+                                                  "x":  52,
+                                                  "y":  23,
+                                                  "r":  1.4
+                                              },
+                                              {
+                                                  "type":  "screw",
+                                                  "x":  63,
+                                                  "y":  23,
+                                                  "r":  1.4
+                                              },
+                                              {
+                                                  "type":  "screw",
+                                                  "x":  74,
+                                                  "y":  23,
+                                                  "r":  1.4
+                                              },
+                                              {
+                                                  "type":  "screw",
+                                                  "x":  89,
+                                                  "y":  12,
+                                                  "r":  2.2
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  89,
+                                                  "y":  19,
+                                                  "text":  "ID",
+                                                  "size":  1.8,
+                                                  "anchor":  "middle"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  99,
+                                                  "y":  2.5,
+                                                  "w":  223,
+                                                  "h":  37.6,
+                                                  "r":  0.6,
+                                                  "fill":  "#14171a"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  101,
+                                                  "y":  4,
+                                                  "w":  72,
+                                                  "h":  16.5,
+                                                  "r":  0.8,
+                                                  "fill":  "#262b31",
+                                                  "stroke":  "#4a535c"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  175,
+                                                  "y":  4,
+                                                  "w":  72,
+                                                  "h":  16.5,
+                                                  "r":  0.8,
+                                                  "fill":  "#262b31",
+                                                  "stroke":  "#4a535c"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  249,
+                                                  "y":  4,
+                                                  "w":  72,
+                                                  "h":  16.5,
+                                                  "r":  0.8,
+                                                  "fill":  "#262b31",
+                                                  "stroke":  "#4a535c"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  101,
+                                                  "y":  22,
+                                                  "w":  72,
+                                                  "h":  16.5,
+                                                  "r":  0.8,
+                                                  "fill":  "#262b31",
+                                                  "stroke":  "#4a535c"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  175,
+                                                  "y":  22,
+                                                  "w":  72,
+                                                  "h":  16.5,
+                                                  "r":  0.8,
+                                                  "fill":  "#262b31",
+                                                  "stroke":  "#4a535c"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  249,
+                                                  "y":  22,
+                                                  "w":  72,
+                                                  "h":  16.5,
+                                                  "r":  0.8,
+                                                  "fill":  "#262b31",
+                                                  "stroke":  "#4a535c"
+                                              },
+                                              {
+                                                  "type":  "hex",
+                                                  "x":  104,
+                                                  "y":  6,
+                                                  "w":  44,
+                                                  "h":  12
+                                              },
+                                              {
+                                                  "type":  "hex",
+                                                  "x":  178,
+                                                  "y":  6,
+                                                  "w":  44,
+                                                  "h":  12
+                                              },
+                                              {
+                                                  "type":  "hex",
+                                                  "x":  252,
+                                                  "y":  6,
+                                                  "w":  44,
+                                                  "h":  12
+                                              },
+                                              {
+                                                  "type":  "hex",
+                                                  "x":  104,
+                                                  "y":  24,
+                                                  "w":  44,
+                                                  "h":  12
+                                              },
+                                              {
+                                                  "type":  "hex",
+                                                  "x":  178,
+                                                  "y":  24,
+                                                  "w":  44,
+                                                  "h":  12
+                                              },
+                                              {
+                                                  "type":  "hex",
+                                                  "x":  252,
+                                                  "y":  24,
+                                                  "w":  44,
+                                                  "h":  12
+                                              },
+                                              {
+                                                  "type":  "handle",
+                                                  "x":  151,
+                                                  "y":  7,
+                                                  "w":  18,
+                                                  "h":  3
+                                              },
+                                              {
+                                                  "type":  "handle",
+                                                  "x":  225,
+                                                  "y":  7,
+                                                  "w":  18,
+                                                  "h":  3
+                                              },
+                                              {
+                                                  "type":  "handle",
+                                                  "x":  299,
+                                                  "y":  7,
+                                                  "w":  18,
+                                                  "h":  3
+                                              },
+                                              {
+                                                  "type":  "handle",
+                                                  "x":  151,
+                                                  "y":  25,
+                                                  "w":  18,
+                                                  "h":  3
+                                              },
+                                              {
+                                                  "type":  "handle",
+                                                  "x":  225,
+                                                  "y":  25,
+                                                  "w":  18,
+                                                  "h":  3
+                                              },
+                                              {
+                                                  "type":  "handle",
+                                                  "x":  299,
+                                                  "y":  25,
+                                                  "w":  18,
+                                                  "h":  3
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  155,
+                                                  "y":  15,
+                                                  "r":  0.8,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  229,
+                                                  "y":  15,
+                                                  "r":  0.8,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  303,
+                                                  "y":  15,
+                                                  "r":  0.8,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  155,
+                                                  "y":  33,
+                                                  "r":  0.8,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  229,
+                                                  "y":  33,
+                                                  "r":  0.8,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  303,
+                                                  "y":  33,
+                                                  "r":  0.8,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  162,
+                                                  "y":  18,
+                                                  "text":  "0",
+                                                  "size":  2.2
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  236,
+                                                  "y":  18,
+                                                  "text":  "1",
+                                                  "size":  2.2
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  310,
+                                                  "y":  18,
+                                                  "text":  "2",
+                                                  "size":  2.2
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  162,
+                                                  "y":  36,
+                                                  "text":  "3",
+                                                  "size":  2.2
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  236,
+                                                  "y":  36,
+                                                  "text":  "4",
+                                                  "size":  2.2
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  310,
+                                                  "y":  36,
+                                                  "text":  "5",
+                                                  "size":  2.2
+                                              },
+                                              {
+                                                  "type":  "hex",
+                                                  "x":  326,
+                                                  "y":  4,
+                                                  "w":  104,
+                                                  "h":  24
+                                              },
+                                              {
+                                                  "type":  "logo",
+                                                  "x":  328,
+                                                  "y":  37,
+                                                  "text":  "DELL",
+                                                  "size":  6
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  430,
+                                                  "y":  37,
+                                                  "text":  "PowerEdge R610",
+                                                  "size":  2.8,
+                                                  "anchor":  "end"
+                                              }
+                                          ]
+                            },
+                  "rear":  {
+                               "items":  [
+                                             {
+                                                 "type":  "rect",
+                                                 "x":  8,
+                                                 "y":  3,
+                                                 "w":  76,
+                                                 "h":  19,
+                                                 "r":  0.6,
+                                                 "fill":  "#2a2f35",
+                                                 "stroke":  "#4a535c"
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  10,
+                                                 "y":  20.5,
+                                                 "text":  "SLOT 1  X710-DA4",
+                                                 "size":  1.9
+                                             },
+                                             {
+                                                 "type":  "rect",
+                                                 "x":  88,
+                                                 "y":  3,
+                                                 "w":  76,
+                                                 "h":  19,
+                                                 "r":  0.6,
+                                                 "fill":  "#2a2f35",
+                                                 "stroke":  "#4a535c"
+                                             },
+                                             {
+                                                 "type":  "slits",
+                                                 "x":  92,
+                                                 "y":  5,
+                                                 "w":  68,
+                                                 "h":  13
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  90,
+                                                 "y":  20.5,
+                                                 "text":  "SLOT 2",
+                                                 "size":  1.9
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  18,
+                                                 "y":  39.5,
+                                                 "text":  "SERIAL",
+                                                 "size":  1.7,
+                                                 "anchor":  "middle"
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  38,
+                                                 "y":  39.5,
+                                                 "text":  "VGA",
+                                                 "size":  1.7,
+                                                 "anchor":  "middle"
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  58,
+                                                 "y":  39.5,
+                                                 "text":  "iDRAC",
+                                                 "size":  1.7,
+                                                 "anchor":  "middle"
+                                             },
+                                             {
+                                                 "type":  "grille",
+                                                 "x":  88,
+                                                 "y":  25,
+                                                 "w":  76,
+                                                 "h":  14
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  174,
+                                                 "y":  14,
+                                                 "text":  "Gb1",
+                                                 "size":  1.9,
+                                                 "anchor":  "middle"
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  189,
+                                                 "y":  14,
+                                                 "text":  "Gb2",
+                                                 "size":  1.9,
+                                                 "anchor":  "middle"
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  204,
+                                                 "y":  14,
+                                                 "text":  "Gb3",
+                                                 "size":  1.9,
+                                                 "anchor":  "middle"
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  219,
+                                                 "y":  14,
+                                                 "text":  "Gb4",
+                                                 "size":  1.9,
+                                                 "anchor":  "middle"
+                                             },
+                                             {
+                                                 "type":  "screw",
+                                                 "x":  234,
+                                                 "y":  20,
+                                                 "r":  2
+                                             },
+                                             {
+                                                 "type":  "led",
+                                                 "x":  234,
+                                                 "y":  28,
+                                                 "r":  1,
+                                                 "color":  "ok"
+                                             },
+                                             {
+                                                 "type":  "rect",
+                                                 "x":  243,
+                                                 "y":  2,
+                                                 "w":  92,
+                                                 "h":  38.6,
+                                                 "r":  1,
+                                                 "fill":  "#22262b",
+                                                 "stroke":  "#4a535c"
+                                             },
+                                             {
+                                                 "type":  "hex",
+                                                 "x":  247,
+                                                 "y":  6,
+                                                 "w":  44,
+                                                 "h":  30
+                                             },
+                                             {
+                                                 "type":  "handle",
+                                                 "x":  324,
+                                                 "y":  6,
+                                                 "w":  6,
+                                                 "h":  30
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  296,
+                                                 "y":  8,
+                                                 "text":  "PS1",
+                                                 "size":  2.2
+                                             },
+                                             {
+                                                 "type":  "led",
+                                                 "x":  318,
+                                                 "y":  34,
+                                                 "r":  1,
+                                                 "color":  "ok"
+                                             },
+                                             {
+                                                 "type":  "rect",
+                                                 "x":  338,
+                                                 "y":  2,
+                                                 "w":  92,
+                                                 "h":  38.6,
+                                                 "r":  1,
+                                                 "fill":  "#22262b",
+                                                 "stroke":  "#4a535c"
+                                             },
+                                             {
+                                                 "type":  "hex",
+                                                 "x":  342,
+                                                 "y":  6,
+                                                 "w":  44,
+                                                 "h":  30
+                                             },
+                                             {
+                                                 "type":  "handle",
+                                                 "x":  419,
+                                                 "y":  6,
+                                                 "w":  6,
+                                                 "h":  30
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  391,
+                                                 "y":  8,
+                                                 "text":  "PS2",
+                                                 "size":  2.2
+                                             },
+                                             {
+                                                 "type":  "led",
+                                                 "x":  413,
+                                                 "y":  34,
+                                                 "r":  1,
+                                                 "color":  "ok"
+                                             }
+                                         ]
+                           },
+                  "top":  {
+                              "items":  [
+                                            {
+                                                "type":  "label",
+                                                "x":  20,
+                                                "y":  590,
+                                                "text":  "PowerEdge R610",
+                                                "size":  10,
+                                                "color":  "#3a4148"
+                                            }
+                                        ]
+                          }
+              },
+    "ports":  [
+                  {
+                      "id":  "usb-front1",
+                      "type":  "usb",
+                      "x":  20,
+                      "y":  7,
+                      "role":  "generic",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "usb-front2",
+                      "type":  "usb",
+                      "x":  20,
+                      "y":  14,
+                      "role":  "generic",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "vga-front",
+                      "type":  "generic",
+                      "x":  20,
+                      "y":  22,
+                      "w":  16,
+                      "h":  8,
+                      "role":  "generic",
+                      "label":  "VGA (frente)",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "ens1f0",
+                      "type":  "sfp+",
+                      "x":  11,
+                      "y":  6,
+                      "role":  "uplink",
+                      "speed":  "10GE",
+                      "face":  "rear",
+                      "label":  "X710 p0 (ens1f0)"
+                  },
+                  {
+                      "id":  "ens1f1",
+                      "type":  "sfp+",
+                      "x":  28,
+                      "y":  6,
+                      "role":  "uplink",
+                      "speed":  "10GE",
+                      "face":  "rear",
+                      "label":  "X710 p1 (ens1f1)"
+                  },
+                  {
+                      "id":  "ens1f2",
+                      "type":  "sfp+",
+                      "x":  45,
+                      "y":  6,
+                      "role":  "uplink",
+                      "speed":  "10GE",
+                      "face":  "rear",
+                      "label":  "X710 p2 (ens1f2)"
+                  },
+                  {
+                      "id":  "ens1f3",
+                      "type":  "sfp+",
+                      "x":  62,
+                      "y":  6,
+                      "role":  "uplink",
+                      "speed":  "10GE",
+                      "face":  "rear",
+                      "label":  "X710 p3 (ens1f3)"
+                  },
+                  {
+                      "id":  "serial",
+                      "type":  "generic",
+                      "x":  10,
+                      "y":  26,
+                      "w":  16,
+                      "h":  9,
+                      "role":  "console",
+                      "face":  "rear",
+                      "label":  "Serial",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "vga",
+                      "type":  "generic",
+                      "x":  30,
+                      "y":  26,
+                      "w":  16,
+                      "h":  9,
+                      "role":  "generic",
+                      "face":  "rear",
+                      "label":  "VGA",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "idrac",
+                      "type":  "rj45",
+                      "x":  52,
+                      "y":  25.5,
+                      "role":  "mgmt",
+                      "speed":  "100M",
+                      "face":  "rear",
+                      "label":  "iDRAC6",
+                      "short":  "i"
+                  },
+                  {
+                      "id":  "usb1",
+                      "type":  "usb",
+                      "x":  70,
+                      "y":  25.5,
+                      "role":  "generic",
+                      "face":  "rear",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "usb2",
+                      "type":  "usb",
+                      "x":  70,
+                      "y":  32,
+                      "role":  "generic",
+                      "face":  "rear",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "eno1",
+                      "type":  "rj45",
+                      "x":  168,
+                      "y":  16,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "face":  "rear",
+                      "label":  "Gb1 (eno1)"
+                  },
+                  {
+                      "id":  "eno2",
+                      "type":  "rj45",
+                      "x":  183,
+                      "y":  16,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "face":  "rear",
+                      "label":  "Gb2 (eno2)"
+                  },
+                  {
+                      "id":  "eno3",
+                      "type":  "rj45",
+                      "x":  198,
+                      "y":  16,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "face":  "rear",
+                      "label":  "Gb3 (eno3)"
+                  },
+                  {
+                      "id":  "eno4",
+                      "type":  "rj45",
+                      "x":  213,
+                      "y":  16,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "face":  "rear",
+                      "label":  "Gb4 (eno4)"
+                  },
+                  {
+                      "id":  "psu1",
+                      "type":  "power-ac",
+                      "x":  296,
+                      "y":  14,
+                      "role":  "power",
+                      "face":  "rear",
+                      "label":  "PS1 (AC)",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "psu2",
+                      "type":  "power-ac",
+                      "x":  391,
+                      "y":  14,
+                      "role":  "power",
+                      "face":  "rear",
+                      "label":  "PS2 (AC)",
+                      "showLabel":  false
+                  }
+              ],
+    "source":  {
+                   "basis":  [
+                                 "datasheet",
+                                 "description",
+                                 "estimate"
+                             ],
+                   "refs":  [
+                                "https://www.xbyte.com/content/PDF/Dell-PowerEdge-R610-Spec-Sheet.pdf",
+                                "https://www.manualsdir.com/manuals/618817/dell-poweredge-r610.html"
+                            ],
+                   "confidence":  "baixa",
+                   "notes":  "Confirmado: 1U, 434 x 42,6 x 627 mm (sem orelhas e sem moldura), 6 baias 2,5 pol. hot-swap, painel frontal com botão liga/desliga, NMI, 2 USB, VGA, LCD com botões de menu e botão de identificação; traseira com 4 RJ45 1G (Gb1-Gb4), serial, VGA, 2 USB, porta iDRAC6 (opcional Enterprise), 2 fontes AC redundantes (PS1/PS2) e 2 slots PCIe low-profile. Placa Intel X710-DA4 (4x SFP+ 10G) no slot 1. Estimado sem foto: disposição de todos os elementos na frente e na traseira (baias desenhadas em 2 fileiras de 3), posição dos slots e das fontes. Ids no padrão Linux (eno1-4, ens1f0-3); ajuste conforme o SO (ESXi usa vmnic).",
+                   "questions":  [
+                                     "Disposição da frente estimada (baias em 2x3, painel de controle à esquerda). Foto da frente.",
+                                     "Disposição da traseira estimada (slots PCIe, NICs, fontes). Foto da traseira.",
+                                     "Em qual slot PCIe está a X710 (assumido slot 1).",
+                                     "Sistema operacional: ids no padrão Linux (eno/ens); ESXi usa vmnic."
+                                 ]
+               }
+}

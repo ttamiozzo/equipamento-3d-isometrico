@@ -1,0 +1,850 @@
+{
+    "id":  "fag-patch-panel-poe-gigabit-12p",
+    "vendor":  "FAG",
+    "name":  "Patch Panel GIGABIT PoE 12 Portas",
+    "category":  "patch-panel",
+    "size":  {
+                 "w":  440,
+                 "h":  44,
+                 "d":  100
+             },
+    "rackUnits":  1,
+    "body":  "light",
+    "faces":  {
+                  "front":  {
+                                "items":  [
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  3.5,
+                                                  "y":  16,
+                                                  "w":  13,
+                                                  "h":  13,
+                                                  "r":  1,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  10,
+                                                  "y":  24.2,
+                                                  "text":  "FAG",
+                                                  "size":  3.6,
+                                                  "anchor":  "middle",
+                                                  "color":  "#ffffff"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  30.5,
+                                                  "y":  21.5,
+                                                  "r":  1,
+                                                  "color":  "down"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  30.5,
+                                                  "y":  27,
+                                                  "text":  "POWER",
+                                                  "size":  1.6,
+                                                  "anchor":  "middle",
+                                                  "rotate":  -90
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  33.8,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  49.6,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 1",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  41.5,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  57.7,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  66.2,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  82.0,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 2",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  73.9,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  90.1,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  98.6,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  114.4,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 3",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  106.3,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  122.5,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  131.0,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  146.8,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 4",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  138.7,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  154.9,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  163.4,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  179.2,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 5",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  171.1,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  187.3,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  195.8,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  211.6,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 6",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  203.5,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  219.7,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  228.2,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  244.0,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 7",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  235.9,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  252.1,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  260.6,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  276.4,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 8",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  268.3,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  284.5,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  293.0,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  308.8,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 9",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  300.7,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  316.9,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  325.4,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  341.2,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 10",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  333.1,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  349.3,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  357.8,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  373.6,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 11",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  365.5,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  381.7,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  390.2,
+                                                  "y":  2.2,
+                                                  "w":  31.6,
+                                                  "h":  12.6,
+                                                  "r":  0.4,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  406.0,
+                                                  "y":  6.6,
+                                                  "text":  "PORTA 12",
+                                                  "size":  2.3,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  397.9,
+                                                  "y":  12.8,
+                                                  "text":  "LAN",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  414.1,
+                                                  "y":  12.8,
+                                                  "text":  "PoE",
+                                                  "size":  2.1,
+                                                  "anchor":  "middle",
+                                                  "color":  "#e8eefc"
+                                              },
+                                              {
+                                                  "type":  "logo",
+                                                  "x":  43,
+                                                  "y":  40.5,
+                                                  "text":  "Patch Panel GIGABIT PoE 12 Portas",
+                                                  "size":  3.8,
+                                                  "color":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  148,
+                                                  "y":  37.5,
+                                                  "text":  "Proteção contra surtos",
+                                                  "size":  1.7,
+                                                  "color":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  148,
+                                                  "y":  40.5,
+                                                  "text":  "nas linhas de dados",
+                                                  "size":  1.7,
+                                                  "color":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  190,
+                                                  "y":  40.5,
+                                                  "text":  "Entrada fonte",
+                                                  "size":  1.7,
+                                                  "color":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "logo",
+                                                  "x":  246,
+                                                  "y":  41.5,
+                                                  "text":  "10/100/1000Mbps",
+                                                  "size":  5,
+                                                  "color":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  318,
+                                                  "y":  41,
+                                                  "text":  "⏚",
+                                                  "size":  4,
+                                                  "anchor":  "middle",
+                                                  "color":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  333,
+                                                  "y":  38,
+                                                  "text":  "www.fag.com.br",
+                                                  "size":  1.7,
+                                                  "color":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  425,
+                                                  "y":  15,
+                                                  "w":  12.5,
+                                                  "h":  12,
+                                                  "r":  1,
+                                                  "fill":  "#2456b8"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  431.2,
+                                                  "y":  22.6,
+                                                  "text":  "FAG",
+                                                  "size":  3.4,
+                                                  "anchor":  "middle",
+                                                  "color":  "#ffffff"
+                                              }
+                                          ]
+                            }
+              },
+    "ports":  [
+                  {
+                      "id":  "LAN1",
+                      "type":  "rj45",
+                      "x":  35.0,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L1"
+                  },
+                  {
+                      "id":  "PoE1",
+                      "type":  "rj45",
+                      "x":  51.2,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P1"
+                  },
+                  {
+                      "id":  "LAN2",
+                      "type":  "rj45",
+                      "x":  67.4,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L2"
+                  },
+                  {
+                      "id":  "PoE2",
+                      "type":  "rj45",
+                      "x":  83.6,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P2"
+                  },
+                  {
+                      "id":  "LAN3",
+                      "type":  "rj45",
+                      "x":  99.8,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L3"
+                  },
+                  {
+                      "id":  "PoE3",
+                      "type":  "rj45",
+                      "x":  116.0,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P3"
+                  },
+                  {
+                      "id":  "LAN4",
+                      "type":  "rj45",
+                      "x":  132.2,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L4"
+                  },
+                  {
+                      "id":  "PoE4",
+                      "type":  "rj45",
+                      "x":  148.4,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P4"
+                  },
+                  {
+                      "id":  "LAN5",
+                      "type":  "rj45",
+                      "x":  164.6,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L5"
+                  },
+                  {
+                      "id":  "PoE5",
+                      "type":  "rj45",
+                      "x":  180.8,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P5"
+                  },
+                  {
+                      "id":  "LAN6",
+                      "type":  "rj45",
+                      "x":  197.0,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L6"
+                  },
+                  {
+                      "id":  "PoE6",
+                      "type":  "rj45",
+                      "x":  213.2,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P6"
+                  },
+                  {
+                      "id":  "LAN7",
+                      "type":  "rj45",
+                      "x":  229.4,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L7"
+                  },
+                  {
+                      "id":  "PoE7",
+                      "type":  "rj45",
+                      "x":  245.6,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P7"
+                  },
+                  {
+                      "id":  "LAN8",
+                      "type":  "rj45",
+                      "x":  261.8,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L8"
+                  },
+                  {
+                      "id":  "PoE8",
+                      "type":  "rj45",
+                      "x":  278.0,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P8"
+                  },
+                  {
+                      "id":  "LAN9",
+                      "type":  "rj45",
+                      "x":  294.2,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L9"
+                  },
+                  {
+                      "id":  "PoE9",
+                      "type":  "rj45",
+                      "x":  310.4,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P9"
+                  },
+                  {
+                      "id":  "LAN10",
+                      "type":  "rj45",
+                      "x":  326.6,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L10"
+                  },
+                  {
+                      "id":  "PoE10",
+                      "type":  "rj45",
+                      "x":  342.8,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P10"
+                  },
+                  {
+                      "id":  "LAN11",
+                      "type":  "rj45",
+                      "x":  359.0,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L11"
+                  },
+                  {
+                      "id":  "PoE11",
+                      "type":  "rj45",
+                      "x":  375.2,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P11"
+                  },
+                  {
+                      "id":  "LAN12",
+                      "type":  "rj45",
+                      "x":  391.4,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "lan",
+                      "speed":  "1GE",
+                      "short":  "L12"
+                  },
+                  {
+                      "id":  "PoE12",
+                      "type":  "rj45",
+                      "x":  407.6,
+                      "y":  17.5,
+                      "w":  13,
+                      "h":  11.5,
+                      "role":  "access",
+                      "speed":  "1GE + PoE",
+                      "short":  "P12"
+                  },
+                  {
+                      "id":  "dc",
+                      "type":  "power-dc",
+                      "x":  211,
+                      "y":  37,
+                      "w":  5,
+                      "h":  5,
+                      "role":  "power",
+                      "label":  "Entrada fonte",
+                      "showLabel":  false
+                  }
+              ],
+    "source":  {
+                   "basis":  [
+                                 "photo",
+                                 "estimate"
+                             ],
+                   "confidence":  "média",
+                   "notes":  "Sem ficha técnica pública encontrada. Frente medida em foto do produto (escala ~0,41 mm/px pela largura de 19 pol.): faixa azul com PORTA 1-12, cada uma com par LAN (vem do switch) e PoE (vai ao equipamento alimentado), 24 RJ45 em fileira única com passo ~16,2 mm, LED POWER à esquerda, entrada de fonte e aterramento na faixa inferior. Estimados: profundidade (100 mm), tipo e posição exata do conector de fonte (marcado como power-dc \u0027Entrada fonte\u0027 na frente) e textos pequenos da serigrafia. Traseira não modelada (sem foto).",
+                   "questions":  [
+                                     "Profundidade estimada em 100 mm. Medir com trena.",
+                                     "Tipo e posição do conector de fonte (\u0027Entrada fonte\u0027) incertos. Foto mais próxima da faixa inferior.",
+                                     "Traseira sem foto."
+                                 ]
+               }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "roteador-1u-8sfpp-4ge",
+  "vendor": "Genérico",
+  "name": "Roteador de borda 1U 8xSFP+ 4xGE",
+  "category": "router",
+  "size": { "w": 440, "h": 44.45, "d": 300 },
+  "rackUnits": 1,
+  "body": "dark",
+  "faces": {
+    "front": { "items": [
+      { "type": "logo", "x": 10, "y": 20, "text": "EDGE ROUTER", "size": 7 },
+      { "type": "label", "x": 10, "y": 31, "text": "8xSFP+ 4xGE", "size": 3 },
+      { "type": "led", "x": 120, "y": 14, "color": "ok" }, { "type": "label", "x": 124, "y": 15.2, "text": "SYS", "size": 2.6 },
+      { "type": "led", "x": 120, "y": 22, "color": "ok" }, { "type": "label", "x": 124, "y": 23.2, "text": "PWR", "size": 2.6 }
+    ] },
+    "rear": { "items": [ { "type": "grille", "x": 100, "y": 6, "w": 240, "h": 32 } ] },
+    "top": { "items": [ { "type": "hex", "x": 330, "y": 20, "w": 90, "h": 260 } ] }
+  },
+  "ports": [
+    {"id":"ge-0/0/0","type":"rj45","x":150,"y":17,"role":"lan","speed":"1GE"},
+    {"id":"ge-0/0/1","type":"rj45","x":165,"y":17,"role":"lan","speed":"1GE"},
+    {"id":"ge-0/0/2","type":"rj45","x":180,"y":17,"role":"lan","speed":"1GE"},
+    {"id":"ge-0/0/3","type":"rj45","x":195,"y":17,"role":"lan","speed":"1GE"},
+    {"id":"xe-0/0/0","type":"sfp+","x":232,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"xe-0/0/1","type":"sfp+","x":250,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"xe-0/0/2","type":"sfp+","x":268,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"xe-0/0/3","type":"sfp+","x":286,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"xe-0/0/4","type":"sfp+","x":304,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"xe-0/0/5","type":"sfp+","x":322,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"xe-0/0/6","type":"sfp+","x":340,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"xe-0/0/7","type":"sfp+","x":358,"y":17,"role":"uplink","speed":"10GE"},
+    {"id":"mgmt","type":"rj45","x":400,"y":17,"role":"mgmt","speed":"1GE"},
+    {"id":"psu1","type":"power-ac","face":"rear","x":30,"y":14,"role":"power","showLabel":false},
+    {"id":"psu2","type":"power-ac","face":"rear","x":386,"y":14,"role":"power","showLabel":false}
+  ],
+  "source": { "basis": ["estimate"], "confidence": "baixa", "notes": "Roteador 1U genérico para exemplo; troque pelo modelo real." }
+}

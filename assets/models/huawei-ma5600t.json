@@ -1,0 +1,103 @@
+{
+  "id": "huawei-ma5600t",
+  "vendor": "Huawei",
+  "name": "SmartAX MA5600T",
+  "category": "olt",
+  "size": { "w": 442, "h": 447, "d": 283 },
+  "rackUnits": 10,
+  "body": "light",
+  "portLabel": "0/{slot}/{port}",
+  "faces": {
+    "front": { "items": [
+      { "type": "rect", "x": 4, "y": 4, "w": 434, "h": 44, "r": 1.5, "fill": "#9aa3ad" },
+      { "type": "grille", "x": 150, "y": 10, "w": 280, "h": 32 },
+      { "type": "logo", "x": 12, "y": 25, "text": "SmartAX MA5600T", "size": 9 },
+      { "type": "label", "x": 12, "y": 38, "text": "FAN", "size": 4 },
+      {"type":"label","x":18.65,"y":410,"text":"1","size":3.6,"anchor":"middle"},
+      {"type":"label","x":39.95,"y":410,"text":"2","size":3.6,"anchor":"middle"},
+      {"type":"label","x":61.25,"y":410,"text":"3","size":3.6,"anchor":"middle"},
+      {"type":"label","x":82.55,"y":410,"text":"4","size":3.6,"anchor":"middle"},
+      {"type":"label","x":103.85,"y":410,"text":"5","size":3.6,"anchor":"middle"},
+      {"type":"label","x":125.15,"y":410,"text":"6","size":3.6,"anchor":"middle"},
+      {"type":"label","x":146.45,"y":410,"text":"7","size":3.6,"anchor":"middle"},
+      {"type":"label","x":167.75,"y":410,"text":"8","size":3.6,"anchor":"middle"},
+      {"type":"label","x":189.05,"y":410,"text":"9","size":3.6,"anchor":"middle"},
+      {"type":"label","x":210.35,"y":410,"text":"10","size":3.6,"anchor":"middle"},
+      {"type":"label","x":231.65,"y":410,"text":"11","size":3.6,"anchor":"middle"},
+      {"type":"label","x":252.95,"y":410,"text":"12","size":3.6,"anchor":"middle"},
+      {"type":"label","x":274.25,"y":410,"text":"13","size":3.6,"anchor":"middle"},
+      {"type":"label","x":295.55,"y":410,"text":"14","size":3.6,"anchor":"middle"},
+      {"type":"label","x":316.85,"y":410,"text":"15","size":3.6,"anchor":"middle"},
+      {"type":"label","x":338.15,"y":410,"text":"16","size":3.6,"anchor":"middle"},
+      {"type":"label","x":359.45,"y":410,"text":"17","size":3.6,"anchor":"middle"},
+      {"type":"label","x":380.75,"y":410,"text":"18","size":3.6,"anchor":"middle"},
+      {"type":"label","x":402.05,"y":410,"text":"19/20","size":3.6,"anchor":"middle"},
+      {"type":"label","x":423.35,"y":410,"text":"21/22","size":3.6,"anchor":"middle"},
+      { "type": "grille", "x": 6, "y": 416, "w": 430, "h": 26 }
+    ] },
+    "top": { "items": [ { "type": "perf", "x": 12, "y": 12, "w": 418, "h": 259 } ] },
+    "left": { "items": [ { "type": "slits", "x": 20, "y": 40, "w": 243, "h": 360 } ] },
+    "right": { "items": [ { "type": "slits", "x": 20, "y": 40, "w": 243, "h": 360 } ] }
+  },
+  "slots": [
+    {"id":"1","x":8.5,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"2","x":29.8,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"3","x":51.1,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"4","x":72.4,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"5","x":93.7,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"6","x":115.0,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"7","x":136.3,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"8","x":157.6,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"9","x":178.9,"y":54,"w":20.3,"h":346,"accepts":["mgmt"]},
+    {"id":"10","x":200.2,"y":54,"w":20.3,"h":346,"accepts":["mgmt"]},
+    {"id":"11","x":221.5,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"12","x":242.8,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"13","x":264.1,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"14","x":285.4,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"15","x":306.7,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"16","x":328.0,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"17","x":349.3,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"18","x":370.6,"y":54,"w":20.3,"h":346,"accepts":["pon"]},
+    {"id":"19","x":391.9,"y":54,"w":20.3,"h":171,"accepts":["uplink"]},
+    {"id":"20","x":391.9,"y":229,"w":20.3,"h":171,"accepts":["uplink"]},
+    {"id":"21","x":413.2,"y":54,"w":20.3,"h":171,"accepts":["power"]},
+    {"id":"22","x":413.2,"y":229,"w":20.3,"h":171,"accepts":["power"]}
+  ],
+  "cards": {
+    "GPFD": { "name": "H805GPFD", "role": "pon", "desc": "GPON 16 portas", "items": [
+      { "type": "label", "x": 12.6, "y": 6, "text": "GPFD", "size": 4.2, "rotate": 90 },
+      { "type": "led", "x": 6, "y": 40, "color": "ok" }, { "type": "led", "x": 14, "y": 40 },
+      { "type": "handle", "x": 4, "y": 2, "w": 12.3, "h": 2.5 }, { "type": "handle", "x": 4, "y": 341.5, "w": 12.3, "h": 2.5 }
+    ], "ports": [{"id":"0","type":"sfp","x":3.3,"y":52,"role":"pon","speed":"GPON"},{"id":"1","type":"sfp","x":3.3,"y":69,"role":"pon","speed":"GPON"},{"id":"2","type":"sfp","x":3.3,"y":86,"role":"pon","speed":"GPON"},{"id":"3","type":"sfp","x":3.3,"y":103,"role":"pon","speed":"GPON"},{"id":"4","type":"sfp","x":3.3,"y":120,"role":"pon","speed":"GPON"},{"id":"5","type":"sfp","x":3.3,"y":137,"role":"pon","speed":"GPON"},{"id":"6","type":"sfp","x":3.3,"y":154,"role":"pon","speed":"GPON"},{"id":"7","type":"sfp","x":3.3,"y":171,"role":"pon","speed":"GPON"},{"id":"8","type":"sfp","x":3.3,"y":188,"role":"pon","speed":"GPON"},{"id":"9","type":"sfp","x":3.3,"y":205,"role":"pon","speed":"GPON"},{"id":"10","type":"sfp","x":3.3,"y":222,"role":"pon","speed":"GPON"},{"id":"11","type":"sfp","x":3.3,"y":239,"role":"pon","speed":"GPON"},{"id":"12","type":"sfp","x":3.3,"y":256,"role":"pon","speed":"GPON"},{"id":"13","type":"sfp","x":3.3,"y":273,"role":"pon","speed":"GPON"},{"id":"14","type":"sfp","x":3.3,"y":290,"role":"pon","speed":"GPON"},{"id":"15","type":"sfp","x":3.3,"y":307,"role":"pon","speed":"GPON"}] },
+    "GPBD": { "name": "H806GPBD", "role": "pon", "desc": "GPON 8 portas", "items": [
+      { "type": "label", "x": 12.6, "y": 6, "text": "GPBD", "size": 4.2, "rotate": 90 },
+      { "type": "led", "x": 6, "y": 40, "color": "ok" }, { "type": "led", "x": 14, "y": 40 },
+      { "type": "handle", "x": 4, "y": 2, "w": 12.3, "h": 2.5 }, { "type": "handle", "x": 4, "y": 341.5, "w": 12.3, "h": 2.5 }
+    ], "ports": [{"id":"0","type":"sfp","x":3.3,"y":52,"role":"pon","speed":"GPON"},{"id":"1","type":"sfp","x":3.3,"y":86,"role":"pon","speed":"GPON"},{"id":"2","type":"sfp","x":3.3,"y":120,"role":"pon","speed":"GPON"},{"id":"3","type":"sfp","x":3.3,"y":154,"role":"pon","speed":"GPON"},{"id":"4","type":"sfp","x":3.3,"y":188,"role":"pon","speed":"GPON"},{"id":"5","type":"sfp","x":3.3,"y":222,"role":"pon","speed":"GPON"},{"id":"6","type":"sfp","x":3.3,"y":256,"role":"pon","speed":"GPON"},{"id":"7","type":"sfp","x":3.3,"y":290,"role":"pon","speed":"GPON"}] },
+    "SCUN": { "name": "H802SCUN", "role": "mgmt", "desc": "Controle e comutação", "items": [
+      { "type": "label", "x": 12.6, "y": 6, "text": "SCUN", "size": 4.2, "rotate": 90 },
+      { "type": "led", "x": 6, "y": 40, "color": "ok" }, { "type": "led", "x": 14, "y": 40, "color": "ok" },
+      { "type": "label", "x": 10.15, "y": 136, "text": "ETH", "size": 3, "anchor": "middle" },
+      { "type": "rect", "x": 4.3, "y": 172, "w": 11.7, "h": 10, "r": 0.6 },
+      { "type": "label", "x": 10.15, "y": 188, "text": "CON", "size": 3, "anchor": "middle" },
+      { "type": "handle", "x": 4, "y": 2, "w": 12.3, "h": 2.5 }, { "type": "handle", "x": 4, "y": 341.5, "w": 12.3, "h": 2.5 }
+    ], "ports": [ { "id": "eth", "type": "rj45", "x": 4.3, "y": 140, "role": "mgmt", "speed": "1GE" } ] },
+    "X2CS": { "name": "H802X2CS", "role": "uplink", "desc": "Uplink 2x10GE SFP+", "items": [
+      { "type": "label", "x": 12.6, "y": 6, "text": "X2CS", "size": 4.2, "rotate": 90 },
+      { "type": "led", "x": 6, "y": 32, "color": "ok" }, { "type": "led", "x": 14, "y": 32 }
+    ], "ports": [
+      { "id": "0", "type": "sfp+", "x": 3.3, "y": 60, "role": "uplink", "speed": "10GE" },
+      { "id": "1", "type": "sfp+", "x": 3.3, "y": 95, "role": "uplink", "speed": "10GE" }
+    ] },
+    "PRTE": { "name": "H801PRTE", "role": "power", "desc": "Alimentação -48 V DC", "items": [
+      { "type": "label", "x": 12.6, "y": 6, "text": "PRTE", "size": 4.2, "rotate": 90 },
+      { "type": "led", "x": 10, "y": 32, "color": "ok" },
+      { "type": "label", "x": 10.15, "y": 104, "text": "-48V", "size": 3, "anchor": "middle" }
+    ], "ports": [ { "id": "pwr", "type": "power-dc", "x": 2, "y": 60, "w": 16, "h": 30, "role": "power", "showLabel": false } ] }
+  },
+  "source": {
+    "basis": ["datasheet", "estimate"],
+    "confidence": "média",
+    "notes": "Dimensões do subrack ETSI (442x283x447 mm) e numeração de slots do MA5600T. Disposição física das placas estilizada: slots 19/20 e 21/22 aparecem empilhados à direita."
+  }
+}

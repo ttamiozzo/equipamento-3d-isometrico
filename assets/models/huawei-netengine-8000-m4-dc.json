@@ -1,0 +1,777 @@
+{
+    "id":  "huawei-netengine-8000-m4-dc",
+    "vendor":  "Huawei",
+    "name":  "NetEngine 8000 M4 (DC)",
+    "category":  "router",
+    "size":  {
+                 "w":  442,
+                 "h":  88.9,
+                 "d":  220
+             },
+    "rackUnits":  2,
+    "body":  "dark",
+    "portLabel":  "0/{slot}/{port}",
+    "faces":  {
+                  "front":  {
+                                "items":  [
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  4,
+                                                  "y":  4,
+                                                  "w":  56,
+                                                  "h":  39.5,
+                                                  "r":  0.8,
+                                                  "fill":  "#22282f",
+                                                  "stroke":  "#4a535c"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  8,
+                                                  "y":  10,
+                                                  "text":  "6  PIU DC",
+                                                  "size":  2.6,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  52,
+                                                  "y":  9,
+                                                  "r":  0.9,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  8,
+                                                  "y":  39,
+                                                  "text":  "-48V / -60V",
+                                                  "size":  2.2,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "screw",
+                                                  "x":  54,
+                                                  "y":  37,
+                                                  "r":  1.6
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  4,
+                                                  "y":  45.5,
+                                                  "w":  56,
+                                                  "h":  39.5,
+                                                  "r":  0.8,
+                                                  "fill":  "#22282f",
+                                                  "stroke":  "#4a535c"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  8,
+                                                  "y":  51.5,
+                                                  "text":  "7  PIU DC",
+                                                  "size":  2.6,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  52,
+                                                  "y":  50.5,
+                                                  "r":  0.9,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  8,
+                                                  "y":  80.5,
+                                                  "text":  "-48V / -60V",
+                                                  "size":  2.2,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "screw",
+                                                  "x":  54,
+                                                  "y":  78.5,
+                                                  "r":  1.6
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  64,
+                                                  "y":  46,
+                                                  "w":  332,
+                                                  "h":  39,
+                                                  "r":  0.8,
+                                                  "fill":  "#2b323a",
+                                                  "stroke":  "#4a535c"
+                                              },
+                                              {
+                                                  "type":  "logo",
+                                                  "x":  68,
+                                                  "y":  52.5,
+                                                  "text":  "NetEngine 8000 M4",
+                                                  "size":  3.6,
+                                                  "color":  "#e3e9ef"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  68,
+                                                  "y":  83,
+                                                  "text":  "5",
+                                                  "size":  2.4,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  70,
+                                                  "y":  57,
+                                                  "r":  0.8,
+                                                  "color":  "ok"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  72.5,
+                                                  "y":  57.8,
+                                                  "text":  "RUN",
+                                                  "size":  1.8,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  70,
+                                                  "y":  61,
+                                                  "r":  0.8
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  72.5,
+                                                  "y":  61.8,
+                                                  "text":  "ALM",
+                                                  "size":  1.8,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  92,
+                                                  "y":  54,
+                                                  "text":  "ETH",
+                                                  "size":  1.8,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  106,
+                                                  "y":  54,
+                                                  "text":  "CON",
+                                                  "size":  1.8,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  92,
+                                                  "y":  83.5,
+                                                  "text":  "CLK / ToD",
+                                                  "size":  1.8,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  126,
+                                                  "y":  53.5,
+                                                  "text":  "100GE 0-3",
+                                                  "size":  1.8,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  176,
+                                                  "y":  53.5,
+                                                  "text":  "10GE/GE 4-19",
+                                                  "size":  1.8,
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "hex",
+                                                  "x":  312,
+                                                  "y":  55,
+                                                  "w":  80,
+                                                  "h":  26
+                                              },
+                                              {
+                                                  "type":  "rect",
+                                                  "x":  400,
+                                                  "y":  4,
+                                                  "w":  38,
+                                                  "h":  81,
+                                                  "r":  0.8,
+                                                  "fill":  "#22282f",
+                                                  "stroke":  "#4a535c"
+                                              },
+                                              {
+                                                  "type":  "grille",
+                                                  "x":  404,
+                                                  "y":  10,
+                                                  "w":  30,
+                                                  "h":  64
+                                              },
+                                              {
+                                                  "type":  "label",
+                                                  "x":  419,
+                                                  "y":  81,
+                                                  "text":  "8  FAN",
+                                                  "size":  2.4,
+                                                  "anchor":  "middle",
+                                                  "color":  "#cfd6dd"
+                                              },
+                                              {
+                                                  "type":  "led",
+                                                  "x":  433,
+                                                  "y":  79.5,
+                                                  "r":  0.8,
+                                                  "color":  "ok"
+                                              }
+                                          ]
+                            },
+                  "top":  {
+                              "items":  [
+                                            {
+                                                "type":  "perf",
+                                                "x":  20,
+                                                "y":  20,
+                                                "w":  400,
+                                                "h":  60
+                                            }
+                                        ]
+                          },
+                  "left":  {
+                               "items":  [
+                                             {
+                                                 "type":  "slits",
+                                                 "x":  10,
+                                                 "y":  10,
+                                                 "w":  200,
+                                                 "h":  68
+                                             }
+                                         ]
+                           },
+                  "right":  {
+                                "items":  [
+                                              {
+                                                  "type":  "slits",
+                                                  "x":  10,
+                                                  "y":  10,
+                                                  "w":  200,
+                                                  "h":  68
+                                              }
+                                          ]
+                            },
+                  "rear":  {
+                               "items":  [
+                                             {
+                                                 "type":  "screw",
+                                                 "x":  20,
+                                                 "y":  44,
+                                                 "r":  2
+                                             },
+                                             {
+                                                 "type":  "label",
+                                                 "x":  24,
+                                                 "y":  45,
+                                                 "text":  "GND",
+                                                 "size":  2.4
+                                             }
+                                         ]
+                           }
+              },
+    "slots":  [
+                  {
+                      "id":  "1",
+                      "x":  64,
+                      "y":  4,
+                      "w":  165,
+                      "h":  19.5,
+                      "accepts":  [
+                                      "pic"
+                                  ]
+                  },
+                  {
+                      "id":  "2",
+                      "x":  231,
+                      "y":  4,
+                      "w":  165,
+                      "h":  19.5,
+                      "accepts":  [
+                                      "pic"
+                                  ]
+                  },
+                  {
+                      "id":  "3",
+                      "x":  64,
+                      "y":  24.5,
+                      "w":  165,
+                      "h":  19.5,
+                      "accepts":  [
+                                      "pic"
+                                  ]
+                  },
+                  {
+                      "id":  "4",
+                      "x":  231,
+                      "y":  24.5,
+                      "w":  165,
+                      "h":  19.5,
+                      "accepts":  [
+                                      "pic"
+                                  ]
+                  }
+              ],
+    "cards":  {
+                  "PIC-8x10GE":  {
+                                     "name":  "Subcartão 8x10GE SFP+ (genérico)",
+                                     "role":  "pic",
+                                     "desc":  "8 portas 10GE SFP+",
+                                     "items":  [
+                                                   {
+                                                       "type":  "label",
+                                                       "x":  4,
+                                                       "y":  8,
+                                                       "text":  "8x10GE",
+                                                       "size":  2.2,
+                                                       "color":  "#cfd6dd"
+                                                   },
+                                                   {
+                                                       "type":  "led",
+                                                       "x":  8,
+                                                       "y":  13,
+                                                       "r":  0.7,
+                                                       "color":  "ok"
+                                                   },
+                                                   {
+                                                       "type":  "handle",
+                                                       "x":  156,
+                                                       "y":  4,
+                                                       "w":  4,
+                                                       "h":  11.5
+                                                   }
+                                               ],
+                                     "ports":  [
+                                                   {
+                                                       "id":  "0",
+                                                       "type":  "sfp+",
+                                                       "x":  24,
+                                                       "y":  5,
+                                                       "role":  "access",
+                                                       "speed":  "10GE"
+                                                   },
+                                                   {
+                                                       "id":  "1",
+                                                       "type":  "sfp+",
+                                                       "x":  40,
+                                                       "y":  5,
+                                                       "role":  "access",
+                                                       "speed":  "10GE"
+                                                   },
+                                                   {
+                                                       "id":  "2",
+                                                       "type":  "sfp+",
+                                                       "x":  56,
+                                                       "y":  5,
+                                                       "role":  "access",
+                                                       "speed":  "10GE"
+                                                   },
+                                                   {
+                                                       "id":  "3",
+                                                       "type":  "sfp+",
+                                                       "x":  72,
+                                                       "y":  5,
+                                                       "role":  "access",
+                                                       "speed":  "10GE"
+                                                   },
+                                                   {
+                                                       "id":  "4",
+                                                       "type":  "sfp+",
+                                                       "x":  88,
+                                                       "y":  5,
+                                                       "role":  "access",
+                                                       "speed":  "10GE"
+                                                   },
+                                                   {
+                                                       "id":  "5",
+                                                       "type":  "sfp+",
+                                                       "x":  104,
+                                                       "y":  5,
+                                                       "role":  "access",
+                                                       "speed":  "10GE"
+                                                   },
+                                                   {
+                                                       "id":  "6",
+                                                       "type":  "sfp+",
+                                                       "x":  120,
+                                                       "y":  5,
+                                                       "role":  "access",
+                                                       "speed":  "10GE"
+                                                   },
+                                                   {
+                                                       "id":  "7",
+                                                       "type":  "sfp+",
+                                                       "x":  136,
+                                                       "y":  5,
+                                                       "role":  "access",
+                                                       "speed":  "10GE"
+                                                   }
+                                               ]
+                                 },
+                  "PIC-8xGE":  {
+                                   "name":  "Subcartão 8xGE SFP (genérico)",
+                                   "role":  "pic",
+                                   "desc":  "8 portas GE SFP",
+                                   "items":  [
+                                                 {
+                                                     "type":  "label",
+                                                     "x":  4,
+                                                     "y":  8,
+                                                     "text":  "8xGE",
+                                                     "size":  2.2,
+                                                     "color":  "#cfd6dd"
+                                                 },
+                                                 {
+                                                     "type":  "led",
+                                                     "x":  8,
+                                                     "y":  13,
+                                                     "r":  0.7,
+                                                     "color":  "ok"
+                                                 },
+                                                 {
+                                                     "type":  "handle",
+                                                     "x":  156,
+                                                     "y":  4,
+                                                     "w":  4,
+                                                     "h":  11.5
+                                                 }
+                                             ],
+                                   "ports":  [
+                                                 {
+                                                     "id":  "0",
+                                                     "type":  "sfp",
+                                                     "x":  24,
+                                                     "y":  5,
+                                                     "role":  "access",
+                                                     "speed":  "GE"
+                                                 },
+                                                 {
+                                                     "id":  "1",
+                                                     "type":  "sfp",
+                                                     "x":  40,
+                                                     "y":  5,
+                                                     "role":  "access",
+                                                     "speed":  "GE"
+                                                 },
+                                                 {
+                                                     "id":  "2",
+                                                     "type":  "sfp",
+                                                     "x":  56,
+                                                     "y":  5,
+                                                     "role":  "access",
+                                                     "speed":  "GE"
+                                                 },
+                                                 {
+                                                     "id":  "3",
+                                                     "type":  "sfp",
+                                                     "x":  72,
+                                                     "y":  5,
+                                                     "role":  "access",
+                                                     "speed":  "GE"
+                                                 },
+                                                 {
+                                                     "id":  "4",
+                                                     "type":  "sfp",
+                                                     "x":  88,
+                                                     "y":  5,
+                                                     "role":  "access",
+                                                     "speed":  "GE"
+                                                 },
+                                                 {
+                                                     "id":  "5",
+                                                     "type":  "sfp",
+                                                     "x":  104,
+                                                     "y":  5,
+                                                     "role":  "access",
+                                                     "speed":  "GE"
+                                                 },
+                                                 {
+                                                     "id":  "6",
+                                                     "type":  "sfp",
+                                                     "x":  120,
+                                                     "y":  5,
+                                                     "role":  "access",
+                                                     "speed":  "GE"
+                                                 },
+                                                 {
+                                                     "id":  "7",
+                                                     "type":  "sfp",
+                                                     "x":  136,
+                                                     "y":  5,
+                                                     "role":  "access",
+                                                     "speed":  "GE"
+                                                 }
+                                             ]
+                               }
+              },
+    "ports":  [
+                  {
+                      "id":  "100GE0/5/0",
+                      "type":  "qsfp28",
+                      "x":  126,
+                      "y":  55,
+                      "role":  "uplink",
+                      "speed":  "100GE (combo 4x25GE)",
+                      "short":  "0"
+                  },
+                  {
+                      "id":  "100GE0/5/1",
+                      "type":  "qsfp28",
+                      "x":  126,
+                      "y":  71,
+                      "role":  "uplink",
+                      "speed":  "100GE (combo 4x25GE)",
+                      "short":  "1"
+                  },
+                  {
+                      "id":  "100GE0/5/2",
+                      "type":  "qsfp28",
+                      "x":  147,
+                      "y":  55,
+                      "role":  "uplink",
+                      "speed":  "100GE (combo 4x25GE)",
+                      "short":  "2"
+                  },
+                  {
+                      "id":  "100GE0/5/3",
+                      "type":  "qsfp28",
+                      "x":  147,
+                      "y":  71,
+                      "role":  "uplink",
+                      "speed":  "100GE (combo 4x25GE)",
+                      "short":  "3"
+                  },
+                  {
+                      "id":  "10GE0/5/4",
+                      "type":  "sfp+",
+                      "x":  176,
+                      "y":  55,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "4"
+                  },
+                  {
+                      "id":  "10GE0/5/5",
+                      "type":  "sfp+",
+                      "x":  176,
+                      "y":  71,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "5"
+                  },
+                  {
+                      "id":  "10GE0/5/6",
+                      "type":  "sfp+",
+                      "x":  191.5,
+                      "y":  55,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "6"
+                  },
+                  {
+                      "id":  "10GE0/5/7",
+                      "type":  "sfp+",
+                      "x":  191.5,
+                      "y":  71,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "7"
+                  },
+                  {
+                      "id":  "10GE0/5/8",
+                      "type":  "sfp+",
+                      "x":  207,
+                      "y":  55,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "8"
+                  },
+                  {
+                      "id":  "10GE0/5/9",
+                      "type":  "sfp+",
+                      "x":  207,
+                      "y":  71,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "9"
+                  },
+                  {
+                      "id":  "10GE0/5/10",
+                      "type":  "sfp+",
+                      "x":  222.5,
+                      "y":  55,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "10"
+                  },
+                  {
+                      "id":  "10GE0/5/11",
+                      "type":  "sfp+",
+                      "x":  222.5,
+                      "y":  71,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "11"
+                  },
+                  {
+                      "id":  "10GE0/5/12",
+                      "type":  "sfp+",
+                      "x":  242,
+                      "y":  55,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "12"
+                  },
+                  {
+                      "id":  "10GE0/5/13",
+                      "type":  "sfp+",
+                      "x":  242,
+                      "y":  71,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "13"
+                  },
+                  {
+                      "id":  "10GE0/5/14",
+                      "type":  "sfp+",
+                      "x":  257.5,
+                      "y":  55,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "14"
+                  },
+                  {
+                      "id":  "10GE0/5/15",
+                      "type":  "sfp+",
+                      "x":  257.5,
+                      "y":  71,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "15"
+                  },
+                  {
+                      "id":  "10GE0/5/16",
+                      "type":  "sfp+",
+                      "x":  273,
+                      "y":  55,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "16"
+                  },
+                  {
+                      "id":  "10GE0/5/17",
+                      "type":  "sfp+",
+                      "x":  273,
+                      "y":  71,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "17"
+                  },
+                  {
+                      "id":  "10GE0/5/18",
+                      "type":  "sfp+",
+                      "x":  288.5,
+                      "y":  55,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "18"
+                  },
+                  {
+                      "id":  "10GE0/5/19",
+                      "type":  "sfp+",
+                      "x":  288.5,
+                      "y":  71,
+                      "role":  "access",
+                      "speed":  "10GE/GE",
+                      "short":  "19"
+                  },
+                  {
+                      "id":  "GigabitEthernet0/0/0",
+                      "type":  "rj45",
+                      "x":  92,
+                      "y":  56,
+                      "role":  "mgmt",
+                      "speed":  "1GE",
+                      "label":  "ETH (gerência)",
+                      "short":  "M"
+                  },
+                  {
+                      "id":  "con",
+                      "type":  "console",
+                      "x":  106,
+                      "y":  56,
+                      "role":  "console",
+                      "label":  "Console",
+                      "short":  "C"
+                  },
+                  {
+                      "id":  "usb",
+                      "type":  "usb",
+                      "x":  92,
+                      "y":  70,
+                      "role":  "generic",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "clk",
+                      "type":  "rj45",
+                      "x":  106,
+                      "y":  70,
+                      "role":  "generic",
+                      "label":  "Clock 1PPS+ToD",
+                      "short":  "T"
+                  },
+                  {
+                      "id":  "piu6",
+                      "type":  "power-dc",
+                      "x":  12,
+                      "y":  18,
+                      "w":  36,
+                      "h":  14,
+                      "role":  "power",
+                      "label":  "PIU 6 (DC -48V)",
+                      "showLabel":  false
+                  },
+                  {
+                      "id":  "piu7",
+                      "type":  "power-dc",
+                      "x":  12,
+                      "y":  59.5,
+                      "w":  36,
+                      "h":  14,
+                      "role":  "power",
+                      "label":  "PIU 7 (DC -48V)",
+                      "showLabel":  false
+                  }
+              ],
+    "source":  {
+                   "basis":  [
+                                 "datasheet",
+                                 "description",
+                                 "estimate"
+                             ],
+                   "refs":  [
+                                "https://en.cdr.pl/p11096,huawei-netengine-8000e-m4-router-2x-100ge-or-8x-25ge-16x-10ge-dc-power-supply.html",
+                                "https://www.tanatel-comm.com/product/netengine-8000-m4/",
+                                "https://carrier.huawei.com/en/products/fixed-network/data-communication/router/NetEngine-8000-Series-Router/NetEngine-8000-M-Series"
+                            ],
+                   "confidence":  "baixa",
+                   "notes":  "Confirmado em revendas: 2U, 442 x 220 x 88,9 mm; slots 1-4 para subcartões (PIC) em chassi DC; slot 5 interface fixa com 4 portas 100G/50G (combo: 2x100GE ou 8x25GE) e 16 portas 10GE/GE (#4-19); slots 6 e 7 fontes DC -48/-60 V em 1+1; slot 8 ventilação; consumo típico 283 W. Estimado sem foto/manual: disposição física (fontes à esquerda, PICs 2x2 em cima, interface fixa embaixo, ventilação à direita), portas de gerência/clock, numeração das SFP+ por coluna e os subcartões (genéricos, nomes reais variam). Ids no padrão VRP (100GE0/5/0, 10GE0/5/4, GigabitEthernet0/0/0); portas combo em breakout viram 25GE0/5/x.",
+                   "questions":  [
+                                     "Disposição física do painel estimada (fontes, subcartões, interface fixa, ventilação). Foto da frente.",
+                                     "Subcartões instalados nos slots 1-4 (display board / display elabel).",
+                                     "Portas 100GE em modo 100G ou breakout 25G?",
+                                     "Posição das portas de gerência, console e clock."
+                                 ]
+               }
+}
